@@ -1,0 +1,299 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.social-icon {
+  margin-top: 35px;
+  font-size: 35px;
+  color: white;
+  padding: 10px;
+}
+
+h1 {
+  letter-spacing: 1.5vw;
+  font-family: "system-ui";
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  background: url(https://img.freepik.com/free-photo/beautiful-umbrella-chair-around-swimming-pool-hotel-resort_74190-1006.jpg?w=996&t=st=1671440447~exp=1671441047~hmac=f8db8a004c8dc2cb36d158474a21e28e84de48d237c8d12c84eb7207070cddc4) no-repeat center;
+  background-size: cover;
+}
+
+.form h4 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form_class {
+  width: 400px;
+  padding: 40px;
+  border-radius: 8px;
+  background-color: white;
+  font-family: "system-ui";
+  box-shadow: 5px 5px 10px rgb(0, 0, 0, 0.3);
+}
+
+.form_div {
+  text-transform: uppercase;
+}
+
+.info_div {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.info_div {
+  letter-spacing: 1px;
+}
+
+.field_class {
+  width: 100%;
+  border-radius: 6px;
+  border-style: solid;
+  border-width: 1px;
+  padding: 5px 0px;
+  text-indent: 6px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-family: "system-ui";
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+}
+
+.submit_class {
+  border-style: none;
+  border-radius: 5px;
+  background-color: #ffe6d4;
+  padding: 8px 20px;
+  font-family: "system-ui";
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  display: block;
+  margin: auto;
+  margin-top: 10px;
+  box-shadow: 2px 2px 5px rgb(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.home {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 750px;
+  width: 100%;
+  background: url(https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80) no-repeat center;
+  background-size: cover;
+  flex-direction: column;
+}
+
+.home h1 {
+  color: aliceblue;
+  font-style: italic;
+  font-weight: 600;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
+}
+
+.main-container .undreline {
+  text-decoration: solid;
+}
+
+.cart {
+  border: none;
+  text-align: center;
+}
+
+.cart img {
+  width: 320px;
+  height: 200px;
+}
+
+.cards {
+  display: flex;
+  justify-content: space-around;
+}
+
+.row {
+  margin: 0;
+}
+
+.contact {
+  width: 35%;
+  text-align: center;
+}
+
+.input-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.input-row .input-group {
+  flex-basis: 45%;
+}
+
+.contact-input {
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  outline: none;
+  padding-bottom: 5px;
+}
+
+textarea {
+  width: 100%;
+  border: 2px solid #ccc;
+  outline: none;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.info {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.map iframe {
+  border: 0;
+  width: 500px;
+  height: 405px;
+}
+
+hr.undreline {
+  border-top: 0;
+  height: 0.3rem;
+  max-width: 10.50rem;
+  margin: 1.5rem auto;
+  background-color: cornflowerblue;
+  opacity: 1;
+}
+
+.about-us {
+  display: flex;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.about-info {
+  text-align: start;
+  background-color: rgb(243, 243, 243);
+  width: 50%;
+}
+
+.about-us img {
+  width: 50%;
+}
+
+.about-info h3 {
+  margin-top: 50px;
+  margin-left: 200px;
+  font-weight: 400;
+}
+
+.about-info p {
+  margin-left: 200px;
+}
+
+
+hr.decoration {
+  border-top: 0;
+  height: 3px;
+  max-width: 3.50rem;
+  margin-top: -5px;
+  margin-left: 200px;
+  margin-bottom: 40px;
+  background-color: cornflowerblue;
+  opacity: 1;
+}
+
+.bookcontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form.reservation {
+  width: 20%;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+
+
+
+
+@media only screen and (max-width: 600px) {
+  .map iframe {
+    border: 0;
+    width: 350px;
+    height: 350px;
+  }
+
+  .contact {
+    width: 85%;
+  }
+
+  .about-us {
+    display: block;
+  }
+
+  .about-info {
+    width: 100%;
+    height: 450px;
+    background-size: cover;
+  }
+
+  .about-us img {
+    width: 100%;
+    margin-bottom: -50px;
+  }
+
+  .about-info h3 {
+    padding-top: 25px;
+    margin-left: 50px;
+  }
+
+  .about-info p {
+    margin-left: 50px;
+  }
+
+  hr.decoration {
+    margin-left: 50px;
+  }
+
+}
