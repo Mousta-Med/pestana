@@ -1,9 +1,8 @@
 var select = document.getElementById("roomtype");
 select.addEventListener("change", function () {
-  console.log('msldjfs');
   var value = select.value;
   if (value == "suite") {
-    // document.getElementById("guestSection").innerHTML = "";
+    document.getElementById("guestSection").innerHTML = "";
     document.getElementById("SuiteType").innerHTML = `
         <label for="suitetype">Suite Type</label>
         <select class="suitetype form-control" name="suitetype" required>
@@ -62,3 +61,19 @@ select.addEventListener("change", function () {
   }
 
 });
+
+function myfunc() {
+  var value = select.value;
+  if (value == "suite") {
+    document.getElementById("SuiteType").classList.remove("d-none")
+  } else {
+    select.addEventListener("change", function () {
+      var value = select.value;
+      if (value == "suite") {
+        document.getElementById("SuiteType").classList.remove("d-none")
+      }
+    })
+  }
+
+}
+

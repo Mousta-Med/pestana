@@ -24,25 +24,28 @@ class room extends Db
     {
         $connect = new Db;
         $conn = $connect->connection();
-        $sql = "INSERT INTO room (romm_type, suite_type, room_number, room_image) VALUES ('$roomtype', '$suitetype', '$roomnum', '$roomimage')";
-        $result = mysqli_query($conn, $sql);
+        $stmt = $conn->prepare("INSERT INTO room (romm_type, suite_type, room_number, room_image) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param('ssis', $roomtype, $suitetype, $roomnum, $roomimage);
+        $result = $stmt->execute();
         if ($result == true) {
             return true;
         } else {
             return false;
         }
     }
-    public function updateroom($roomtype, $roomnum, $roomimage, $id)
+    public function updateroom($roomtype, $roomnum, $suitetype, $roomimage, $id)
     {
 
         $connect = new Db;
         $conn = $connect->connection();
-        if (empty($tourimage)) {
-            $sql = "UPDATE room SET tour_place = '$roomtype', tour_description = '$roomnum' WHERE id = '$id' ";
+        if (empty($roomimage)) {
+            $stmt = $conn->prepare("UPDATE room SET romm_type = ?, room_number = ?, suite_type = ? WHERE romm_id = ?");
+            $stmt->bind_param('sisi', $roomtype, $roomnum, $suitetype, $id);
         } else {
-            $sql = "UPDATE tours SET tour_place = '$roomtype', tour_description = '$roomnum', tour_image = '$roomimage' WHERE id = '$id' ";
+            $stmt = $conn->prepare("UPDATE room SET romm_type = ?, room_number = ?, suite_type = ?, room_image = ? WHERE romm_id = ?");
+            $stmt->bind_param('sissi', $roomtype, $roomnum, $suitetype, $roomimage, $id);
         }
-        $result = mysqli_query($conn, $sql);
+        $result = $stmt->execute();
         if ($result == true) {
             return true;
         } else {
@@ -53,8 +56,9 @@ class room extends Db
     {
         $connect = new Db;
         $conn = $connect->connection();
-        $sql =  "DELETE FROM room WHERE id = $id";
-        $result = mysqli_query($conn, $sql);
+        $stmt = $conn->prepare("DELETE FROM room WHERE romm_id = ?");
+        $stmt->bind_param('i', $id);
+        $result = $stmt->execute();
         if ($result == true) {
             return true;
         } else {

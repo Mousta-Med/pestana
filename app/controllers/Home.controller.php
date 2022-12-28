@@ -45,14 +45,14 @@ class homecontroller
         $newpath = "public/img/" . $roomimage;
         move_uploaded_file($oldpath, $newpath);
 
-        if (empty($suitetype)) {
-            $this->app = new room;
-            $suitetype = "";
-            $requet = $this->app->addroom($roomtype, $suitetype, $roomnum, $roomimage);
-        } else {
-            $this->app = new room;
-            $requet = $this->app->addroom($roomtype, $suitetype, $roomnum, $roomimage);
-        }
+        // if (empty($suitetype)) {
+        //     $this->app = new room;
+        //     $suitetype = "";
+        //     $requet = $this->app->addroom($roomtype, $suitetype, $roomnum, $roomimage);
+        // } else {
+        // }
+        $this->app = new room;
+        $requet = $this->app->addroom($roomtype, $suitetype, $roomnum, $roomimage);
 
         if ($requet == true) {
             header("location: ../dashboard");
@@ -60,35 +60,39 @@ class homecontroller
             echo "error";
         }
     }
-    public function editetour($id)
+    public function updateroom($id)
     {
-        $roomtype = $_POST['name'];
-        $roomnum = $_POST['description'];
+        $roomnum = $_POST['roomnum'];
+        $roomtype = $_POST['roomtype'];
+        $suitetype = $_POST['suitetype'];
         $roomimage = $_FILES['image']['name'];
         $oldpath = $_FILES['image']['tmp_name'];
         $newpath = "public/img/" . $roomimage;
         move_uploaded_file($oldpath, $newpath);
         $this->app = new room;
-        $requet = $this->app->updateroom($roomtype, $roomnum, $roomimage, $id);
+        $requet = $this->app->updateroom($roomtype, $roomnum, $suitetype, $roomimage, $id);
         if ($requet == true) {
             header("location: ../../dashboard");
         } else {
             echo "error";
         }
     }
-    public function delete($id)
+    public function deleteroom($id)
     {
-        session_start();
-        if (isset($_SESSION['name']) && isset($_SESSION['password'])) {
+        // session_start();
+        // if (isset($_SESSION['name']) && isset($_SESSION['password'])) {
+
+        // } else {
+        //     header("location: ../../home");
+        // }
+        if (filter_var($id, FILTER_VALIDATE_INT) === false) {
+            throw new Exception("This page are not exist !!!");
+        } else {
             $this->app = new room;
             $requet = $this->app->deleteroom($id);
             if ($requet == true) {
                 header("location: ../../dashboard");
-            } else {
-                echo "error";
             }
-        } else {
-            header("location: ../../home");
         }
     }
     public function checklogin()

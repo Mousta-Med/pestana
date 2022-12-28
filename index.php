@@ -24,6 +24,16 @@ if (empty($_GET['page'])) {
                 } else {
                     $homecontroller->updateform($id);
                 }
+            } else if ($URL[1] === "updateroom") {
+                $id = $URL[2];
+                if (filter_var($id, FILTER_VALIDATE_INT) === false) {
+                    throw new Exception("This page are not exist !!!");
+                } else {
+                    $homecontroller->updateroom($id);
+                }
+            } else if ($URL[1] === "delete") {
+                $id = $URL[2];
+                $homecontroller->deleteroom($id);
             } else {
                 require "app/views/404.view.php";
             }

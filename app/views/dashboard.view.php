@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
-    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+    <title>Dashboard</title>
 </head>
 
 <div class="container-fluid mt-4">
@@ -41,7 +41,7 @@
                                     <td><img src="public/img/<?= $rooms['room_image'] ?>" width="50" height="50" style="border-radius:5px;"></td>
                                     <td>
                                         <a href="dashboard/update/<?= $rooms['romm_id'] ?>"><button type="button" class="btn btn-secondary mr-2">Edit</button></a>
-                                        <button type="button" class="btn btn-danger">Delete</button>
+                                        <a href="dashboard/delete/<?= $rooms['romm_id'] ?>"><button type=" button" class="btn btn-danger">Delete</button></a>
                                     </td>
                                 </tr>
                             <?php } ?>
