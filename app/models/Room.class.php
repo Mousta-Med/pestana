@@ -2,7 +2,7 @@
 
 require_once "Db.class.php";
 
-class room extends Db
+class Room extends Db
 {
 
     public function showrooms()

@@ -2,7 +2,7 @@
 
 require_once "Db.class.php";
 
-class admin extends Db
+class Admin extends Db
 {
 
 }

@@ -1,27 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>404</title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
-    <link rel="stylesheet" type="text/css" href="public/css/style.css" />
+<title>404</title>
+<link href="https://fonts.googleapis.com/css?family=Roboto:700" rel="stylesheet">
+<style>
+h1{
+font-size:80px;
+font-weight:800;
+text-align:center;
+font-family: 'Roboto', sans-serif;
+}
+h2
+{
+font-size:25px;
+text-align:center;
+font-family: 'Roboto', sans-serif;
+margin-top:-40px;
+}
+p{
+text-align:center;
+font-family: 'Roboto', sans-serif;
+font-size:12px;
+}
+
+.container
+{
+width:300px;
+margin: 0 auto;
+margin-top:15%;
+}
+</style>
 </head>
-
 <body>
-    <div class="notfound" style="text-align:center;">
-        <div>
-            <h1>404</h1>
-            <h3>Not Found</h3>
-            <p>The page you requested not found</p>
-        </div>
-    </div>
-    <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js">
-    </script>
-    <script src="public/js/script.js"></script>
+<div class="container">
+<h1>404</h1>
+<h2>Page Not Found</h2>
+<p>The Page you are looking for doesn't exist or an other error occured.</p>
+</div>
 </body>
-
 </html>

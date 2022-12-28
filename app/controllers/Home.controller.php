@@ -11,7 +11,7 @@ class homecontroller
 
     public function showrooms()
     {
-        $this->app = new room;
+        $this->app = new Room;
         $sql = $this->app->showrooms();
         require "app/views/dashboard.view.php";
     }
@@ -28,10 +28,10 @@ class homecontroller
     {
         // session_start();
         // if (!isset($_SESSION['name']) && !isset($_SESSION['password'])) {
-        //     header("location: ../../login?login=you must login");
+        //     header("location: ../../view/login?login=you must login");
         // } else {
         // }
-        $this->app = new room;
+        $this->app = new Room;
         $sql =  $this->app->showroomid($id);
         require "app/views/update.view.php";
     }
@@ -45,13 +45,7 @@ class homecontroller
         $newpath = "public/img/" . $roomimage;
         move_uploaded_file($oldpath, $newpath);
 
-        // if (empty($suitetype)) {
-        //     $this->app = new room;
-        //     $suitetype = "";
-        //     $requet = $this->app->addroom($roomtype, $suitetype, $roomnum, $roomimage);
-        // } else {
-        // }
-        $this->app = new room;
+        $this->app = new Room;
         $requet = $this->app->addroom($roomtype, $suitetype, $roomnum, $roomimage);
 
         if ($requet == true) {
@@ -69,7 +63,7 @@ class homecontroller
         $oldpath = $_FILES['image']['tmp_name'];
         $newpath = "public/img/" . $roomimage;
         move_uploaded_file($oldpath, $newpath);
-        $this->app = new room;
+        $this->app = new Room;
         $requet = $this->app->updateroom($roomtype, $roomnum, $suitetype, $roomimage, $id);
         if ($requet == true) {
             header("location: ../../dashboard");
@@ -88,7 +82,7 @@ class homecontroller
         if (filter_var($id, FILTER_VALIDATE_INT) === false) {
             throw new Exception("This page are not exist !!!");
         } else {
-            $this->app = new room;
+            $this->app = new Room;
             $requet = $this->app->deleteroom($id);
             if ($requet == true) {
                 header("location: ../../dashboard");
