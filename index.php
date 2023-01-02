@@ -20,14 +20,14 @@ if (empty($_GET['page'])) {
             } else if ($URL[1] === "update") {
                 $id = $URL[2];
                 if (filter_var($id, FILTER_VALIDATE_INT) === false) {
-                    throw new Exception("This page are not exist !!!");
+                    require "app/views/404.view.php";
                 } else {
                     $homecontroller->updateform($id);
                 }
             } else if ($URL[1] === "updateroom") {
                 $id = $URL[2];
                 if (filter_var($id, FILTER_VALIDATE_INT) === false) {
-                    throw new Exception("This page are not exist !!!");
+                    require "app/views/404.view.php";
                 } else {
                     $homecontroller->updateroom($id);
                 }

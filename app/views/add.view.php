@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="public/css/style.css" />
 </head>
 
-<body>
+<body onload="myfunc()">
     <div class="container mt-5">
         <h1>Add a Room</h1>
         <a href="../dashboard"><button class="btn btn-danger">Back</button></a>
@@ -29,13 +29,22 @@
                     <option>double</option>
                     <option>suite</option>
                 </select>
-                <div id="SuiteType"></div>
-            </div>
-            <div class="form-group">
-                <label>Room Image:</label>
-                <input type="file" class="form-control" name="image" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Add Room</button>
+                <div id="SuiteType" class="d-none">
+                    <label for="suitetype">Suite Type</label>
+                    <select class="suitetype form-control" name="suitetype" required>
+                        <option>Standard</option>
+                        <option>Junior</option>
+                        <option>Presidential</option>
+                        <option>Penthouse</option>
+                        <option>Honeymoon</option>
+                        <option>Bridal</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Room Image:</label>
+                    <input type="file" class="form-control" name="image" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Room</button>
         </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
