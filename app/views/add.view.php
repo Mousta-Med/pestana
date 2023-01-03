@@ -18,33 +18,29 @@
         <br>
         <br>
         <form method="post" action="addroom" enctype="multipart/form-data">
-            <div class="form-group">
-                <label>Room Number:</label>
-                <input type="number" class="form-control" name="roomnum" placeholder="Enter room number" required>
-            </div>
-            <div class="form-group">
-                <label>Room Type:</label>
-                <select class="form-control" id="roomtype" name="roomtype">
-                    <option>single</option>
-                    <option>double</option>
-                    <option>suite</option>
+            <label>Room Number:</label>
+            <input type="number" class="form-control" name="roomnum" placeholder="Enter room number" required>
+            <label>Room Type:</label>
+            <select class="form-control" id="roomtype" name="roomtype">
+                <option>single</option>
+                <option>double</option>
+                <option>suite</option>
+            </select>
+            <div class="">
+                <label for="SuiteType" id="suite-label">Suite Type</label>
+                <select id="SuiteType" class="suitetype form-control" name="suitetype" required>
+                    <option>standard</option>
+                    <option>junior</option>
+                    <option>presidential</option>
+                    <option>penthouse</option>
+                    <option>honeymoon</option>
+                    <option>bridal</option>
                 </select>
-                <div id="SuiteType" class="d-none">
-                    <label for="suitetype">Suite Type</label>
-                    <select class="suitetype form-control" name="suitetype" required>
-                        <option>Standard</option>
-                        <option>Junior</option>
-                        <option>Presidential</option>
-                        <option>Penthouse</option>
-                        <option>Honeymoon</option>
-                        <option>Bridal</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Room Image:</label>
-                    <input type="file" class="form-control" name="image" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Add Room</button>
+            </div>
+            <label>Room Image:</label>
+            <input type="file" class="form-control" name="image" required>
+
+            <button type="submit" class="btn btn-primary">Add Room</button>
         </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

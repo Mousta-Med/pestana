@@ -37,27 +37,27 @@
                                     echo "selected";
                                 } ?>>suite</option>
                     </select>
-                    <div id="SuiteType" class="d-none">
-                        <label for="suitetype">Suite Type</label>
-                        <select class="suitetype form-control" name="suitetype" required>
+                    <div class="">
+                        <label for="suitetype" id="suite-label">Suite Type</label>
+                        <select id="SuiteType" class="suitetype form-control" name="suitetype" required>
                             <option <?php if ($rooms['suite_type'] === "standard") {
                                         echo "selected";
-                                    } ?>>Standard</option>
+                                    } ?>>standard</option>
                             <option <?php if ($rooms['suite_type'] === "junior") {
                                         echo "selected";
-                                    } ?>>Junior</option>
+                                    } ?>>junior</option>
                             <option <?php if ($rooms['suite_type'] === "presidential") {
                                         echo "selected";
-                                    } ?>>Presidential</option>
+                                    } ?>>presidential</option>
                             <option <?php if ($rooms['suite_type'] === "penthouse") {
                                         echo "selected";
-                                    } ?>>Penthouse</option>
+                                    } ?>>penthouse</option>
                             <option <?php if ($rooms['suite_type'] === "honeymoon") {
                                         echo "selected";
-                                    } ?>>Honeymoon</option>
+                                    } ?>>honeymoon</option>
                             <option <?php if ($rooms['suite_type'] === "bridal") {
                                         echo "selected";
-                                    } ?>>Bridal</option>
+                                    } ?>>bridal</option>
                         </select>
                     </div>
                 </div>
