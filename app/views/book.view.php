@@ -11,14 +11,11 @@
     <link rel="stylesheet" type="text/css" href="public/css/style.css" />
 </head>
 
-<body>
+<body onload="myfunc()">
     <!-- navbar -->
     <nav class="navbar navbar-expand-sm sticky-top navbar-dark bg-black">
         <div class="container">
             <a class="navbar-brand" href="">Pestana CR7</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
             <div class="collapse navbar-collapse" id="mynavbar">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
@@ -40,21 +37,41 @@
     <h1>Book a Room</h1>
     <div class="bookcontainer">
         <form class="reservation">
-            <label for="checkin">Check-in Date:</label>
+            <label>Check-in Date:</label>
             <input type="date" id="checkin" name="checkin">
-            <label for="checkout">Duration:</label>
-            <input type="number" name="duration">
+            <label>Check-out Date:</label>
+            <input type="date" id="checkout" name="checkout">
             <label for="roomtype">Room Type:</label>
             <select id="roomtype" name="roomtype">
                 <option>single</option>
                 <option>double</option>
                 <option>suite</option>
             </select>
-            <div id="SuiteType"></div>
-            <div id="nbpersonne"></div>
-            <div id="guestSection"></div>
+            <div class="">
+                <label for="suitetype" id="suite-label">Suite Type</label>
+                <select id="SuiteType" class="suitetype form-control" name="suitetype" required>
+                    <option>standard</option>
+                    <option>junior</option>
+                    <option>presidential</option>
+                    <option>penthouse</option>
+                    <option>honeymoon</option>
+                    <option>bridal</option>
+                </select>
+            </div>
             <input type="submit" value="Book Now">
         </form>
+        <div class="rooms">
+            <?php
+            while ($rooms = mysqli_fetch_assoc($sql)) { ?>
+                <div class="room">
+                    <img src="public/img/<?= $rooms['room_image'] ?>" alt="" height="250" weight="250">
+                    <div class="inform">
+                        <p><?= $rooms['room_number'] ?></p>
+                        <p><?= $rooms['romm_type'] ?></p>
+                    </div>
+                </div>
+            <?php } ?>
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="public/js/script.js"></script>

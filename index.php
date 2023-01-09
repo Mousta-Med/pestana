@@ -48,7 +48,7 @@ if (empty($_GET['page'])) {
             require "app/views/home.view.php";
             break;
         case "book":
-            require "app/views/book.view.php";
+            $homecontroller->book();
             break;
         default:
             require "app/views/404.view.php";

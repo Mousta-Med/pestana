@@ -23,7 +23,8 @@ h1 {
   justify-content: center;
   height: 100vh;
   width: 100%;
-  background: url(https://img.freepik.com/free-photo/beautiful-umbrella-chair-around-swimming-pool-hotel-resort_74190-1006.jpg?w=996&t=st=1671440447~exp=1671441047~hmac=f8db8a004c8dc2cb36d158474a21e28e84de48d237c8d12c84eb7207070cddc4) no-repeat center;
+  background: url(https://img.freepik.com/free-photo/beautiful-umbrella-chair-around-swimming-pool-hotel-resort_74190-1006.jpg?w=996&t=st=1671440447~exp=1671441047~hmac=f8db8a004c8dc2cb36d158474a21e28e84de48d237c8d12c84eb7207070cddc4)
+    no-repeat center;
   background-size: cover;
 }
 
@@ -89,7 +90,8 @@ h1 {
   justify-content: space-evenly;
   height: 750px;
   width: 100%;
-  background: url(https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80) no-repeat center;
+  background: url(https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80)
+    no-repeat center;
   background-size: cover;
   flex-direction: column;
 }
@@ -173,7 +175,7 @@ textarea {
 hr.undreline {
   border-top: 0;
   height: 0.3rem;
-  max-width: 10.50rem;
+  max-width: 10.5rem;
   margin: 1.5rem auto;
   background-color: cornflowerblue;
   opacity: 1;
@@ -205,11 +207,10 @@ hr.undreline {
   margin-left: 200px;
 }
 
-
 hr.decoration {
   border-top: 0;
   height: 3px;
-  max-width: 3.50rem;
+  max-width: 3.5rem;
   margin-top: -5px;
   margin-left: 200px;
   margin-bottom: 40px;
@@ -217,19 +218,14 @@ hr.decoration {
   opacity: 1;
 }
 
-.bookcontainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 form.reservation {
-  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 input,
 select {
-  width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
@@ -238,9 +234,8 @@ select {
   box-sizing: border-box;
 }
 
-input[type=submit] {
-  width: 100%;
-  background-color: #4CAF50;
+input[type="submit"] {
+  background-color: #4caf50;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -249,13 +244,19 @@ input[type=submit] {
   cursor: pointer;
 }
 
-input[type=submit]:hover {
+input[type="submit"]:hover {
   background-color: #45a049;
 }
-
-
-
-
+.rooms {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.inform {
+  display: flex;
+  justify-content: space-between;
+}
 
 @media only screen and (max-width: 600px) {
   .map iframe {
@@ -295,5 +296,4 @@ input[type=submit]:hover {
   hr.decoration {
     margin-left: 50px;
   }
-
 }

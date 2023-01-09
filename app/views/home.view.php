@@ -16,9 +16,6 @@
   <nav class="navbar navbar-expand-sm sticky-top navbar-dark bg-black">
     <div class="container">
       <a class="navbar-brand" href="">Pestana CR7</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-        <span class="navbar-toggler-icon"></span>
-      </button>
       <div class="collapse navbar-collapse" id="mynavbar">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
