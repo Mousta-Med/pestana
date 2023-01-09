@@ -89,9 +89,17 @@ class homecontroller
             }
         }
     }
-    public function book(){
+    public function book()
+    {
         $this->app = new Room;
-        $sql = $this->app->showrooms();
+        $sql = $this->app->showbookrooms();
+        require "app/views/book.view.php";
+    }
+    public function bookroom()
+    {
+        $room_type = $_POST['roomtype'];
+        $this->app = new Room;
+        $sql = $this->app->showbookroom($room_type);
         require "app/views/book.view.php";
     }
     // public function checklogin()

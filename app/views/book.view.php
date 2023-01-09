@@ -36,7 +36,7 @@
     </nav>
     <h1>Book a Room</h1>
     <div class="bookcontainer">
-        <form class="reservation">
+        <form class="reservation" action="book/single" method="post">
             <label>Check-in Date:</label>
             <input type="date" id="checkin" name="checkin">
             <label>Check-out Date:</label>
@@ -47,7 +47,7 @@
                 <option>double</option>
                 <option>suite</option>
             </select>
-            <div class="">
+            <div class="" style="display: flex;">
                 <label for="suitetype" id="suite-label">Suite Type</label>
                 <select id="SuiteType" class="suitetype form-control" name="suitetype" required>
                     <option>standard</option>

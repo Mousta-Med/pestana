@@ -48,7 +48,11 @@ if (empty($_GET['page'])) {
             require "app/views/home.view.php";
             break;
         case "book":
-            $homecontroller->book();
+            if (empty($URL[1])) {
+                $homecontroller->book();
+            }elseif($URL[1] === "single" ){
+                $homecontroller->bookroom();
+            }
             break;
         default:
             require "app/views/404.view.php";
