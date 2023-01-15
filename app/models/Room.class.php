@@ -23,7 +23,14 @@ class Room extends Db
     {
         $connect = new Db;
         $conn = $connect->connection();
-        $sql = $conn->query("SELECT * FROM room WHERE room_reservation = 0 AND romm_type = $room_type");
+        $sql = $conn->query("SELECT * FROM room WHERE room_reservation = 0 AND romm_type = '$room_type'");
+        return $sql;
+    }
+    public function showbooksuite($room_type, $suitetype)
+    {
+        $connect = new Db;
+        $conn = $connect->connection();
+        $sql = $conn->query("SELECT * FROM room WHERE room_reservation = 0 AND romm_type = '$room_type' AND suite_type = '$suitetype'");
         return $sql;
     }
 

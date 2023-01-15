@@ -8,7 +8,7 @@
     <title>ADD</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
-    <link rel="stylesheet" type="text/css" href="public/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/pestana/public/css/style.css" />
 </head>
 
 <body onload="myfunc()">
@@ -26,6 +26,7 @@
                 <option>double</option>
                 <option>suite</option>
             </select>
+            <div class="guests"></div>
             <div class="">
                 <label for="SuiteType" id="suite-label">Suite Type</label>
                 <select id="SuiteType" class="suitetype form-control" name="suitetype" required>

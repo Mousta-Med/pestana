@@ -2,6 +2,10 @@
 
 require_once "app/controllers/Home.controller.php";
 $homecontroller = new homecontroller;
+// hide errors
+// ini_set('display_errors', 0);
+// ini_set('display_startup_errors', 0);
+// error_reporting(-1);
 
 if (empty($_GET['page'])) {
     require "app/views/home.view.php";
@@ -38,6 +42,9 @@ if (empty($_GET['page'])) {
                 require "app/views/404.view.php";
             }
             break;
+        case "addreservation":
+            $homecontroller->addreservation();
+            break;
         case "signup":
             require "app/views/signup.view.php";
             break;
@@ -48,11 +55,15 @@ if (empty($_GET['page'])) {
             require "app/views/home.view.php";
             break;
         case "book":
-            if (empty($URL[1])) {
-                $homecontroller->book();
-            }elseif($URL[1] === "single" ){
-                $homecontroller->bookroom();
+            $id = $URL[1];
+            if (filter_var($id, FILTER_VALIDATE_INT) === false) {
+                require "app/views/404.view.php";
+            } else {
+                $homecontroller->book($id);
             }
+            break;
+        case "rooms":
+            $homecontroller->rooms();
             break;
         default:
             require "app/views/404.view.php";

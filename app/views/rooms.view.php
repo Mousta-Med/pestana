@@ -5,20 +5,15 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Reservation</title>
+    <title>Rooms</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
     <link rel="stylesheet" type="text/css" href="/pestana/public/css/style.css" />
-    <style>
-        input {
-            width: 150px;
-        }
-    </style>
 </head>
 
 <body onload="myfunc()">
     <!-- navbar -->
-    <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-black">
+    <nav class="navbar navbar-expand-sm sticky-top navbar-dark bg-black">
         <div class="container">
             <a class="navbar-brand" href="">Pestana CR7</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
@@ -27,10 +22,10 @@
             <div class="collapse navbar-collapse" id="mynavbar">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/pestana/home">Home</a>
+                        <a class="nav-link" href="home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/pestana/rooms">Rooms</a>
+                        <a class="nav-link" href="rooms">Rooms</a>
                     </li>
                     <?php if (!isset($_SESSION['user'])) { ?>
                         <li class="nav-item">
@@ -52,54 +47,54 @@
             </div>
         </div>
     </nav>
-
-    <main class="reservation">
-        <div class="reservation-form">
-            <div id="image">
-                <img src="https://images.unsplash.com/photo-1606046604972-77cc76aee944?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80" style="border-top-left-radius:10px;border-bottom-left-radius:10px;" width="370" height="570">
+    <h1>Search a Room</h1>
+    <div class="bookcontainer">
+        <form class="search-room" action="" method="post">
+            <label>Check-in Date:</label>
+            <input type="date" id="checkin" name="checkin">
+            <label>Check-out Date:</label>
+            <input type="date" id="checkout" name="checkout">
+            <label for="roomtype">Room Type:</label>
+            <select id="roomtype" name="roomtype">
+                <option>single</option>
+                <option>double</option>
+                <option>suite</option>
+            </select>
+            <div class="" style="display: flex; align-items:center;">
+                <label for="suitetype" id="suite-label">Suite Type</label>
+                <select id="SuiteType" class="suitetype form-control" name="suitetype" required>
+                    <option>standard</option>
+                    <option>junior</option>
+                    <option>presidential</option>
+                    <option>penthouse</option>
+                    <option>honeymoon</option>
+                    <option>bridal</option>
+                </select>
             </div>
-
-            <form action="/pestana/addreservation" method="post" class="d-flex flex-column align-items-center justify-content-center">
-                <div class="d-flex">
-                    <div>
-                        <label>Check-in Date :</label>
-                        <input type="date" name="check_in" required>
-                    </div>
-                    <div>
-                        <label>Check-out Date :</label>
-                        <input type="date" name="check_out" required>
-                    </div>
-                </div>
-                <?php
-                $rooms = mysqli_fetch_assoc($sql) ?>
-                <label>Room Type :</label>
-                <input type="txet" id="roomtype" value="<?= $rooms['romm_type'] ?>" name="roomtype" readonly>
-
-                <label id="suite-label">Suite Type</label>
-                <input type="text" id="SuiteType" value="<?= $rooms['suite_type'] ?>" readonly>
-
-                <div class="d-flex">
-                    <div>
-                        <label>Room Number :</label>
-                        <input type="number" value="<?= $rooms['room_number'] ?>" name="roomnum" min="1" max="6" readonly>
-                    </div>
-                    <div class="guests">
-                        <label>Number Of Guest:</label>
-                        <input id="nbpersonne" type="number" name="guests" value="0" min="0" max="6" required>
-                    </div>
-                </div>
-                <div class="container d-flex flex-column align-items-center justify-content-center">
-                    <div class="guests-form row">
-
-                    </div>
-                </div>
-                <button class="btn btn-success">Book Now</button>
-            </form>
+            <button class="btn btn-primary" type="submit">Search Now</button>
+        </form>
+        <div class="guests" class="d-none">
+            <input id="nbpersonne" type="number" min="0" max="6" disabled>
         </div>
-
-    </main>
+        <div class="rooms">
+            <?php
+            while ($rooms = mysqli_fetch_assoc($sql)) { ?>
+                <form action="book/<?= $rooms['romm_id'] ?>" method="post">
+                    <div class="room ">
+                        <img src="/pestana/public/img/<?= $rooms['room_image'] ?>" alt="" height="200" weight="200">
+                        <div class="inform">
+                            <input class="d-none" type="number" name="roomid" value="<?= $rooms['romm_id'] ?>">
+                            <p><?= $rooms['room_number'] ?></p>
+                            <button class="btn btn-primary">Book</button>
+                            <p><?= $rooms['romm_type'] ?></p>
+                        </div>
+                    </div>
+                </form>
+            <?php } ?>
+        </div>
+    </div>
     <!--  footer  -->
-    <footer class="text-center text-white bg-black ">
+    <footer class=" text-center text-white bg-black">
         <div class="footer-container">
             <div class="social-icons">
                 <a href=""><i class="fa-brands fa-facebook social-icon"></i></a>
@@ -113,7 +108,6 @@
             </div>
         </div>
     </footer>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/pestana/public/js/script.js"></script>
 </body>

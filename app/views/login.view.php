@@ -8,7 +8,7 @@
   <title>LOG-IN</title>
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
-  <link rel="stylesheet" type="text/css" href="public/css/style.css" />
+  <link rel="stylesheet" type="text/css" href="/pestana/public/css/style.css" />
 </head>
 
 <body>
@@ -16,13 +16,16 @@
   <nav class="navbar navbar-expand-sm sticky-top navbar-dark bg-black">
     <div class="container">
       <a class="navbar-brand" href="">Pestana CR7</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <div class="collapse navbar-collapse" id="mynavbar">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
             <a class="nav-link" href="home">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="book">Book</a>
+            <a class="nav-link" href="romms">Rooms</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="login"><i class="fa-solid fa-right-to-bracket"></i>&nbspLog-in</a>
@@ -53,7 +56,7 @@
     </div>
   </main>
   <!--  footer  -->
-  <footer class="text-center text-white bg-black">
+  <footer class="text-center text-white bg-black ">
     <div class="footer-container">
       <div class="social-icons">
         <a href=""><i class="fa-brands fa-facebook social-icon"></i></a>
