@@ -127,8 +127,8 @@ class homecontroller
         $roomnum = $_POST['roomnum'];
         $roomtype = $_POST['roomtype'];
         $guestsnb = $_POST['guests'];
-        // $this->app->ownreservation($roomnum);
-        // $requet = $this->app->addreservation($reservationOwner, $checkin, $checkout, $roomnum, $roomtype, $guestsnb);
+        $this->app->ownreservation($roomnum);
+        $requet = $this->app->addreservation($reservationOwner, $checkin, $checkout, $roomnum, $roomtype, $guestsnb);
 
         if (isset($guestsnb)) {
             if ($guestsnb > 0) {
