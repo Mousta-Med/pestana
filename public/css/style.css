@@ -270,6 +270,15 @@ input[type="submit"]:hover {
     no-repeat center;
   background-size: cover;
 }
+.bookcontainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: url(https://img.freepik.com/free-photo/loft-living-room-interior-design_53876-145499.jpg?w=1380&t=st=1673899524~exp=1673900124~hmac=cb601822ef93584c66e955e2e86c94a131fa8b2efd4d9e57ed2a831ee1d63967)
+    no-repeat center;
+  background-size: cover;
+}
 .reservation-form {
   border-radius: 10px;
   background-color: azure;

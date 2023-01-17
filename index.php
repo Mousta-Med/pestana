@@ -1,7 +1,9 @@
 <?php
 
 require_once "app/controllers/Home.controller.php";
+require_once "app/controllers/User.controller.php";
 $homecontroller = new homecontroller;
+$usercontroller = new usercontroller;
 // hide errors
 // ini_set('display_errors', 0);
 // ini_set('display_startup_errors', 0);
@@ -46,13 +48,20 @@ if (empty($_GET['page'])) {
             $homecontroller->addreservation();
             break;
         case "signup":
-            require "app/views/signup.view.php";
+            if (empty($URL[1])) {
+                require "app/views/signup.view.php";
+            } elseif ($URL[1] === "add") {
+                $usercontroller->signup();
+            }
             break;
         case "login":
             require "app/views/login.view.php";
             break;
         case "home":
             require "app/views/home.view.php";
+            break;
+        case "profile":
+            require "app/views/profile.view.php";
             break;
         case "book":
             $id = $URL[1];

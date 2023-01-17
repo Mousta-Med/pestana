@@ -39,18 +39,18 @@
     </nav>
     <!-- container -->
     <main class="form">
-        <form id="login_form" class="form_class" action="login/login-access.php" method="post">
+        <form class="form_class" action="signup/add" method="post">
             <h4>SIGN-UP</h4>
             <div class="form_div">
                 <label>full name:</label>
-                <input class="field_class" name="login_txt" type="text" placeholder="Enter your Full Name" />
+                <input class="field_class" name="user_name" type="text" placeholder="Enter your Full Name" />
                 <label>email:</label>
-                <input class="field_class" name="login_txt" type="email" placeholder="Enter your Email" />
+                <input class="field_class" name="user_email" type="email" placeholder="Enter your Email" />
                 <label>Phone number:</label>
-                <input class="field_class" name="login_txt" type="tel" placeholder="Enter your Phone Number" />
+                <input class="field_class" name="user_phone" type="tel" placeholder="Enter your Phone Number" />
                 <label>Password:</label>
-                <input id="pass" class="field_class" name="password" type="password" placeholder="Set A password" />
-                <button class="submit_class" type="submit" form="login_form">Enter</button>
+                <input id="pass" class="field_class" name="user_password" type="password" placeholder="Set A password" />
+                <button class="submit_class" type="submit">Submit</button>
             </div>
             <div class="info_div">
                 <p>

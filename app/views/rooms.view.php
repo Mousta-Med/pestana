@@ -47,50 +47,52 @@
             </div>
         </div>
     </nav>
-    <h1>Search a Room</h1>
     <div class="bookcontainer">
-        <form class="search-room" action="" method="post">
-            <label>Check-in Date:</label>
-            <input type="date" id="checkin" name="checkin">
-            <label>Check-out Date:</label>
-            <input type="date" id="checkout" name="checkout">
-            <label for="roomtype">Room Type:</label>
-            <select id="roomtype" name="roomtype">
-                <option>single</option>
-                <option>double</option>
-                <option>suite</option>
-            </select>
-            <div class="" style="display: flex; align-items:center;">
-                <label for="suitetype" id="suite-label">Suite Type</label>
-                <select id="SuiteType" class="suitetype form-control" name="suitetype" required>
-                    <option>standard</option>
-                    <option>junior</option>
-                    <option>presidential</option>
-                    <option>penthouse</option>
-                    <option>honeymoon</option>
-                    <option>bridal</option>
+        <div>
+            <h1 class="mb-5">Search a Room</h1>
+            <form class="search-room mb-5" action="" method="post">
+                <label>Check-in Date:</label>
+                <input type="date" id="checkin" name="checkin">
+                <label>Check-out Date:</label>
+                <input type="date" id="checkout" name="checkout">
+                <label for="roomtype">Room Type:</label>
+                <select id="roomtype" name="roomtype">
+                    <option>single</option>
+                    <option>double</option>
+                    <option>suite</option>
                 </select>
+                <div class="" style="display: flex; align-items:center;">
+                    <label for="suitetype" id="suite-label">Suite Type</label>
+                    <select id="SuiteType" class="suitetype form-control" name="suitetype" required>
+                        <option>standard</option>
+                        <option>junior</option>
+                        <option>presidential</option>
+                        <option>penthouse</option>
+                        <option>honeymoon</option>
+                        <option>bridal</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary" type="submit">Search Now</button>
+            </form>
+            <div class="guests" class="d-none">
+                <input id="nbpersonne" type="number" min="0" max="6" disabled>
             </div>
-            <button class="btn btn-primary" type="submit">Search Now</button>
-        </form>
-        <div class="guests" class="d-none">
-            <input id="nbpersonne" type="number" min="0" max="6" disabled>
-        </div>
-        <div class="rooms">
-            <?php
-            while ($rooms = mysqli_fetch_assoc($sql)) { ?>
-                <form action="book/<?= $rooms['romm_id'] ?>" method="post">
-                    <div class="room ">
-                        <img src="/pestana/public/img/<?= $rooms['room_image'] ?>" alt="" height="200" weight="200">
-                        <div class="inform">
-                            <input class="d-none" type="number" name="roomid" value="<?= $rooms['romm_id'] ?>">
-                            <p><?= $rooms['room_number'] ?></p>
-                            <button class="btn btn-primary">Book</button>
-                            <p><?= $rooms['romm_type'] ?></p>
+            <div class="rooms">
+                <?php
+                while ($rooms = mysqli_fetch_assoc($sql)) { ?>
+                    <form action="book/<?= $rooms['romm_id'] ?>" method="post">
+                        <div class="room ">
+                            <img src="/pestana/public/img/<?= $rooms['room_image'] ?>" alt="" height="200" weight="200">
+                            <div class="inform">
+                                <input class="d-none" type="number" name="roomid" value="<?= $rooms['romm_id'] ?>">
+                                <p><?= $rooms['room_number'] ?></p>
+                                <button class="btn btn-primary">Book</button>
+                                <p><?= $rooms['romm_type'] ?></p>
+                            </div>
                         </div>
-                    </div>
-                </form>
-            <?php } ?>
+                    </form>
+                <?php } ?>
+            </div>
         </div>
     </div>
     <!--  footer  -->
