@@ -19,6 +19,7 @@ h1 {
 
 .form {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
@@ -285,6 +286,12 @@ input[type="submit"]:hover {
 input,
 label {
   display: block;
+}
+
+.msg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media only screen and (max-width: 600px) {

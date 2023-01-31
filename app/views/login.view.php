@@ -40,17 +40,29 @@
   <!-- container -->
   <main>
     <div class="form">
-      <form id="login_form" class="form_class" action="" method="post">
+      <?php
+      if (!empty($_SESSION['alert'])) {
+      ?>
+        <div class="msg">
+          <div class="alert alert-<?= $_SESSION['alert']['type'] ?>" role="alert">
+            <?= $_SESSION['alert']['msg'] ?>
+          </div>
+        </div>
+      <?php
+      }
+      unset($_SESSION['alert']);
+      ?>
+      <form id="login_form" class="form_class" action="user-login" method="post">
         <h4>LOG-IN</h4>
         <div class="form_div">
-          <label>username:</label>
-          <input class="field_class" name="login_txt" type="text" placeholder="Enter your username" autofocus />
+          <label>Email:</label>
+          <input class="field_class" name="email" type="text" placeholder="Enter your username" />
           <label>Password:</label>
           <input id="pass" class="field_class" name="password" type="password" placeholder="Enter your password" />
           <button class="submit_class" type="submit">Enter</button>
         </div>
         <div class="info_div">
-          <p>You dont have account ?<a href="">Register now</a></p>
+          <p>You dont have account ?<a href="signup">Register now</a></p>
         </div>
       </form>
     </div>

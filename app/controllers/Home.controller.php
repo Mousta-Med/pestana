@@ -6,6 +6,8 @@ require_once "app/models/User.class.php";
 require_once "app/models/Db.class.php";
 require_once "app/models/Reservation.class.php";
 
+
+
 class homecontroller
 {
     private $app;
@@ -20,7 +22,6 @@ class homecontroller
     }
     public function addform()
     {
-        // session_start();
         // if (!isset($_SESSION['name']) && !isset($_SESSION['password'])) {
         //     header("location: ../views/login.view.php?login=you must login");
         // } else {

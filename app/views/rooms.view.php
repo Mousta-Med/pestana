@@ -27,20 +27,23 @@
                     <li class="nav-item">
                         <a class="nav-link" href="rooms">Rooms</a>
                     </li>
-                    <?php if (!isset($_SESSION['user'])) { ?>
+                    <?php if (!isset($_SESSION['email'])) { ?>
                         <li class="nav-item">
                             <a class="nav-link" href="/pestana/login"><i class="fa-solid fa-right-to-bracket"></i>&nbspLog-in</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/pestana/signup"><i class="fa-solid fa-user-plus"></i>&nbspsign-up</a>
                         </li>
-                    <?php } ?>
-                    <?php if (isset($_SESSION['user'])) { ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/pestana/home">Profile</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/pestana/login"><i class="fa-solid fa-right-from-bracket"></i>Log-out</a>
+                    <?php } else { ?>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <?= $_SESSION['name'] ?>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/pestana/reservation">Your reservation</a></li>
+                                <li><a class="dropdown-item" href="/pestana/logout"><i class="fa-solid fa-right-from-bracket"></i>Log-out</a></li>
+                            </ul>
                         </li>
                     <?php } ?>
                 </ul>

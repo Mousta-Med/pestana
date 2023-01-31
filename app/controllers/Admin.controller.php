@@ -1,6 +1,6 @@
 <?php
 
-require_once "app/models/User.class.php";
+require_once "app/models/Admin.class.php";
 require_once "app/models/Db.class.php";
 
 

@@ -3,7 +3,10 @@
 require_once "app/controllers/Home.controller.php";
 require_once "app/controllers/User.controller.php";
 $homecontroller = new homecontroller;
-$usercontroller = new usercontroller;
+$Usercontroller = new usercontroller;
+session_start();
+
+
 // hide errors
 // ini_set('display_errors', 0);
 // ini_set('display_startup_errors', 0);
@@ -48,14 +51,19 @@ if (empty($_GET['page'])) {
             $homecontroller->addreservation();
             break;
         case "signup":
-            if (empty($URL[1])) {
-                require "app/views/signup.view.php";
-            } elseif ($URL[1] === "add") {
-                $usercontroller->signup();
-            }
+            $Usercontroller->signupform();
+            break;
+        case "user-signup":
+            $Usercontroller->signup();
             break;
         case "login":
-            require "app/views/login.view.php";
+            $Usercontroller->loginform();
+            break;
+        case "logout":
+            $Usercontroller->logout();
+            break;
+        case "user-login":
+            $Usercontroller->login();
             break;
         case "home":
             require "app/views/home.view.php";

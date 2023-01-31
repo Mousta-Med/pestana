@@ -27,20 +27,23 @@
           <li class="nav-item">
             <a class="nav-link" href="rooms">Rooms</a>
           </li>
-          <?php if (!isset($_SESSION['user'])) { ?>
+          <?php if (!isset($_SESSION['email'])) { ?>
             <li class="nav-item">
               <a class="nav-link" href="/pestana/login"><i class="fa-solid fa-right-to-bracket"></i>&nbspLog-in</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/pestana/signup"><i class="fa-solid fa-user-plus"></i>&nbspsign-up</a>
             </li>
-          <?php } ?>
-          <?php if (isset($_SESSION['user'])) { ?>
-            <li class="nav-item">
-              <a class="nav-link" href="/pestana/home">Profile</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/pestana/login"><i class="fa-solid fa-right-from-bracket"></i>Log-out</a>
+          <?php } else { ?>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <?= $_SESSION['name'] ?>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/pestana/reservation">Your reservation</a></li>
+                <li><a class="dropdown-item" href="/pestana/logout"><i class="fa-solid fa-right-from-bracket"></i>Log-out</a></li>
+              </ul>
             </li>
           <?php } ?>
         </ul>
@@ -50,8 +53,20 @@
   <!-- container -->
   <div class="main-container">
     <main class="home">
+      <?php
+      if (!empty($_SESSION['alert'])) {
+      ?>
+        <div class="msg">
+          <div class="alert alert-<?= $_SESSION['alert']['type'] ?>" role="alert">
+            <?= $_SESSION['alert']['msg'] ?>
+          </div>
+        </div>
+      <?php
+      }
+      unset($_SESSION['alert']);
+      ?>
       <h1>Welcome To Pestana CR7</h1>
-      <a href=""><button class="btn btn-lg btn-dark">Book Now</button></a>
+      <a href="rooms"><button class="btn btn-lg btn-dark">Book Now</button></a>
     </main>
     <h1 class="mt-xl-5">OUR SPECIALS</h1>
     <hr class="undreline">
@@ -156,5 +171,6 @@
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 
 </html>

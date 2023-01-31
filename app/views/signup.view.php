@@ -39,7 +39,19 @@
     </nav>
     <!-- container -->
     <main class="form">
-        <form class="form_class" action="signup/add" method="post">
+        <?php
+        if (!empty($_SESSION['alert'])) {
+        ?>
+            <div class="msg">
+                <div class="alert alert-<?= $_SESSION['alert']['type'] ?>" role="alert">
+                    <?= $_SESSION['alert']['msg'] ?>
+                </div>
+            </div>
+        <?php
+        }
+        unset($_SESSION['alert']);
+        ?>
+        <form class="form_class" action="user-signup" method="post">
             <h4>SIGN-UP</h4>
             <div class="form_div">
                 <label>full name:</label>
@@ -55,7 +67,7 @@
             <div class="info_div">
                 <p>
                     Already have an account ?
-                    <a href="">Login now</a>
+                    <a href="login">Login now</a>
                 </p>
             </div>
         </form>
