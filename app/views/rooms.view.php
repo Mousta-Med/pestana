@@ -55,9 +55,9 @@
             <h1 class="mb-5">Search a Room</h1>
             <form class="search-room mb-5" action="" method="post">
                 <label>Check-in Date:</label>
-                <input type="date" id="checkin" name="checkin">
+                <input type="date" id="checkin" name="checkin" required>
                 <label>Check-out Date:</label>
-                <input type="date" id="checkout" name="checkout">
+                <input type="date" id="checkout" name="checkout" required>
                 <label for="roomtype">Room Type:</label>
                 <select id="roomtype" name="roomtype">
                     <option>single</option>
@@ -78,19 +78,22 @@
                 <button class="btn btn-primary" type="submit">Search Now</button>
             </form>
             <div class="guests" class="d-none">
-                <input id="nbpersonne" type="number" min="0" max="6" disabled>
+                <input id="nbpersonne" type="hidden" min="0" max="6" disabled>
             </div>
             <div class="rooms">
                 <?php
                 while ($rooms = mysqli_fetch_assoc($sql)) { ?>
                     <form action="book/<?= $rooms['romm_id'] ?>" method="post">
-                        <div class="room ">
-                            <img src="/pestana/public/img/<?= $rooms['room_image'] ?>" alt="" height="200" weight="200">
-                            <div class="inform">
+                        <div class="room mb-3">
+                            <div class="inform p-3">
+                                <p><?= ucwords($rooms['romm_type']) ?> Room</p>
+                                <p><?= ucwords($rooms['suite_type']) ?></p>
+                            </div>
+                            <img src="/pestana/public/img/<?= $rooms['room_image'] ?>" alt="">
+                            <div class="inform p-3">
                                 <input class="d-none" type="number" name="roomid" value="<?= $rooms['romm_id'] ?>">
-                                <p><?= $rooms['room_number'] ?></p>
                                 <button class="btn btn-primary">Book</button>
-                                <p><?= $rooms['romm_type'] ?></p>
+                                <p><?= $rooms['room_price'] ?>$ / Night</p>
                             </div>
                         </div>
                     </form>

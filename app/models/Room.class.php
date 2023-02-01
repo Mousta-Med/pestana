@@ -16,21 +16,31 @@ class Room extends Db
     {
         $connect = new Db;
         $conn = $connect->connection();
-        $sql = $conn->query("SELECT * FROM room WHERE room_reservation = 0");
+        $sql = $conn->query("SELECT * FROM room WHERE romm_id NOT IN ( SELECT room_id FROM reservation )");
         return $sql;
     }
-    public function showbookroom($room_type)
+    public function showbookroom($room_type, $checkin, $checkout)
     {
         $connect = new Db;
         $conn = $connect->connection();
-        $sql = $conn->query("SELECT * FROM room WHERE room_reservation = 0 AND romm_type = '$room_type'");
+        $sql = $conn->query("SELECT room.* FROM room
+        WHERE romm_type = '$room_type' AND romm_id NOT IN (
+            SELECT room_id FROM reservation 
+            WHERE (
+                ('$checkin' BETWEEN check_in AND check_out) 
+                OR ('$checkout' BETWEEN check_in AND check_out)
+                OR (check_in BETWEEN '$checkin' AND '$checkout')
+            )
+        )");
+        // $sql = $conn->query("SELECT * FROM room WHERE room_reservation = 0 AND romm_type = '$room_type'");
         return $sql;
     }
     public function showbooksuite($room_type, $suitetype)
     {
         $connect = new Db;
         $conn = $connect->connection();
-        $sql = $conn->query("SELECT * FROM room WHERE room_reservation = 0 AND romm_type = '$room_type' AND suite_type = '$suitetype'");
+        $sql = $conn->query("SELECT * FROM room WHERE romm_type = '$room_type' AND suite_type = '$suitetype' AND romm_id NOT IN ( SELECT room_id FROM reservation )");
+        // $sql = $conn->query("SELECT * FROM room WHERE room_reservation = 0 AND romm_type = '$room_type' AND suite_type = '$suitetype'");
         return $sql;
     }
 

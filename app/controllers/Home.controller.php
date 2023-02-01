@@ -103,6 +103,8 @@ class homecontroller
     {
         if (isset($_POST['roomtype'])) {
             $roomtype = $_POST['roomtype'];
+            $checkin = $_POST['checkin'];
+            $checkout = $_POST['checkout'];
             if (isset($_POST['suitetype'])) {
                 $suitetype = $_POST['suitetype'];
             }
@@ -113,7 +115,7 @@ class homecontroller
         } elseif ($roomtype === "suite") {
             $sql = $this->app->showbooksuite($roomtype, $suitetype);
         } else {
-            $sql = $this->app->showbookroom($roomtype);
+            $sql = $this->app->showbookroom($roomtype, $checkin, $checkout);
         }
         require "app/views/rooms.view.php";
     }

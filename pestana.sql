@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 15, 2023 at 10:39 PM
+-- Generation Time: Feb 01, 2023 at 07:51 PM
 -- Server version: 10.4.27-MariaDB
--- PHP Version: 8.0.25
+-- PHP Version: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -47,17 +47,11 @@ INSERT INTO `admin` (`admin_id`, `admin_username`, `admin_password`) VALUES
 --
 
 CREATE TABLE `guest` (
-  `room_number` int(11) NOT NULL,
+  `guest_id` int(11) NOT NULL,
+  `reservation_id` int(11) NOT NULL,
   `guest_name` varchar(100) NOT NULL,
   `guest_birthday` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `guest`
---
-
-INSERT INTO `guest` (`room_number`, `guest_name`, `guest_birthday`) VALUES
-(9889, 'mousa test', '2002-12-04');
 
 -- --------------------------------------------------------
 
@@ -70,7 +64,7 @@ CREATE TABLE `reservation` (
   `reservation_owner` varchar(200) NOT NULL,
   `check_in` date NOT NULL,
   `check_out` date NOT NULL,
-  `room_number` int(11) NOT NULL,
+  `room_id` int(11) NOT NULL,
   `room_type` varchar(200) NOT NULL,
   `guests_number` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -85,26 +79,25 @@ CREATE TABLE `room` (
   `romm_id` int(11) NOT NULL,
   `romm_type` varchar(100) NOT NULL,
   `suite_type` varchar(100) DEFAULT NULL,
-  `room_number` int(11) NOT NULL,
-  `room_image` varchar(100) NOT NULL,
-  `room_reservation` tinyint(1) NOT NULL
+  `room_price` int(11) NOT NULL,
+  `room_image` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `room`
 --
 
-INSERT INTO `room` (`romm_id`, `romm_type`, `suite_type`, `room_number`, `room_image`, `room_reservation`) VALUES
-(41, 'single', NULL, 234, 'single.jpg', 0),
-(42, 'double', NULL, 655, 'double.jpg', 0),
-(44, 'suite', 'bridal', 9889, 'triple.jpg', 0),
-(45, 'suite', 'standard', 3, 'triple.jpg', 0),
-(46, 'suite', 'junior', 4, 'triple.jpg', 0),
-(47, 'suite', 'presidential', 5, 'triple.jpg', 0),
-(48, 'suite', 'penthouse', 6, 'triple.jpg', 0),
-(50, 'suite', 'honeymoon', 9, 'triple.jpg', 0),
-(51, 'single', NULL, 99, 'single.jpg', 0),
-(62, 'suite', 'honeymoon', 66, 'triple.jpg', 0);
+INSERT INTO `room` (`romm_id`, `romm_type`, `suite_type`, `room_price`, `room_image`) VALUES
+(41, 'single', NULL, 234, 'single.jpg'),
+(42, 'double', NULL, 655, 'double.jpg'),
+(44, 'suite', 'bridal', 9889, 'triple.jpg'),
+(45, 'suite', 'standard', 3, 'triple.jpg'),
+(46, 'suite', 'junior', 4, 'triple.jpg'),
+(47, 'suite', 'presidential', 5, 'triple.jpg'),
+(48, 'suite', 'penthouse', 6, 'triple.jpg'),
+(50, 'suite', 'honeymoon', 9, 'triple.jpg'),
+(51, 'single', NULL, 99, 'single.jpg'),
+(62, 'suite', 'honeymoon', 66, 'triple.jpg');
 
 -- --------------------------------------------------------
 
@@ -121,6 +114,13 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`user_id`, `user_name`, `user_email`, `user_password`, `user_phone`) VALUES
+(1, 'mousta muhammed', 'travigo@gmail.com', '$2y$10$pAoYbW2sF21CDbxO.d00zuWpnHp/yVs7XZjS4pRZZZolFBvBBBwky', 644291265);
+
+--
 -- Indexes for dumped tables
 --
 
@@ -134,20 +134,21 @@ ALTER TABLE `admin`
 -- Indexes for table `guest`
 --
 ALTER TABLE `guest`
-  ADD PRIMARY KEY (`room_number`);
+  ADD PRIMARY KEY (`guest_id`),
+  ADD KEY `reservation_id` (`reservation_id`);
 
 --
 -- Indexes for table `reservation`
 --
 ALTER TABLE `reservation`
-  ADD PRIMARY KEY (`reservation_id`);
+  ADD PRIMARY KEY (`reservation_id`),
+  ADD KEY `room_id` (`room_id`);
 
 --
 -- Indexes for table `room`
 --
 ALTER TABLE `room`
-  ADD PRIMARY KEY (`romm_id`),
-  ADD UNIQUE KEY `room_number` (`room_number`);
+  ADD PRIMARY KEY (`romm_id`);
 
 --
 -- Indexes for table `user`
@@ -166,10 +167,16 @@ ALTER TABLE `admin`
   MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `guest`
+--
+ALTER TABLE `guest`
+  MODIFY `guest_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `room`
@@ -181,7 +188,23 @@ ALTER TABLE `room`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `guest`
+--
+ALTER TABLE `guest`
+  ADD CONSTRAINT `guest_ibfk_1` FOREIGN KEY (`reservation_id`) REFERENCES `reservation` (`reservation_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `reservation`
+--
+ALTER TABLE `reservation`
+  ADD CONSTRAINT `reservation_ibfk_1` FOREIGN KEY (`room_id`) REFERENCES `room` (`romm_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

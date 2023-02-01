@@ -25,7 +25,7 @@
             <a class="nav-link" href="home">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="romms">Rooms</a>
+            <a class="nav-link" href="rooms">Rooms</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="login"><i class="fa-solid fa-right-to-bracket"></i>&nbspLog-in</a>

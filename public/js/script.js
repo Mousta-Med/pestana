@@ -49,3 +49,14 @@ function myfunc() {
     }
   });
 }
+if (checkin) {
+  var currentDate = new Date().toISOString().slice(0, 10);
+  let checkin = document.querySelector("#checkin");
+  let checkout = document.querySelector("#checkout");
+  checkin.setAttribute("min", currentDate);
+  checkout.setAttribute("min", currentDate);
+  checkin.addEventListener("change", (e) => {
+    checkout.setAttribute("min", e.target.value);
+  });
+
+}
