@@ -52,19 +52,19 @@
                 <img src="https://images.unsplash.com/photo-1606046604972-77cc76aee944?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80" style="border-top-left-radius:10px;border-bottom-left-radius:10px;" width="370" height="570">
             </div>
 
-            <form action="/pestana/addreservation" method="post" class="d-flex flex-column align-items-center justify-content-center">
+            <form action="/pestana/addreservation/<?= $id ?>" method="post" class="d-flex flex-column align-items-center justify-content-center">
+                <?php
+                $rooms = mysqli_fetch_assoc($sql) ?>
                 <div class="d-flex">
                     <div>
                         <label>Check-in Date :</label>
-                        <input type="date" name="check_in" required>
+                        <input type="date" name="check_in" value="<?= $_SESSION['check_in'] ?>" readonly>
                     </div>
                     <div>
                         <label>Check-out Date :</label>
-                        <input type="date" name="check_out" required>
+                        <input type="date" name="check_out" value="<?= $_SESSION['check_out'] ?>" readonly>
                     </div>
                 </div>
-                <?php
-                $rooms = mysqli_fetch_assoc($sql) ?>
                 <label>Room Type :</label>
                 <input type="txet" id="roomtype" value="<?= $rooms['romm_type'] ?>" name="roomtype" readonly>
 
@@ -73,8 +73,8 @@
 
                 <div class="d-flex">
                     <div>
-                        <label>Room Number :</label>
-                        <input type="number" value="<?= $rooms['room_number'] ?>" name="roomnum" min="1" max="6" readonly>
+                        <label>Room Price :</label>
+                        <input type="number" value="<?= $rooms['room_price'] ?>" name="roomnum" min="1" max="6" readonly>
                     </div>
                     <div class="guests">
                         <label>Number Of Guest:</label>

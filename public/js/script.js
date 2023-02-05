@@ -58,5 +58,4 @@ if (checkin) {
   checkin.addEventListener("change", (e) => {
     checkout.setAttribute("min", e.target.value);
   });
-
 }

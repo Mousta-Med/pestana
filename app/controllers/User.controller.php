@@ -93,9 +93,9 @@ class usercontroller
     }
     public function logout()
     {
-        session_unset();
-        session_destroy();
-        session_start();
+        unset($_SESSION['email']);
+        unset($_SESSION['id']);
+        unset($_SESSION['name']);
         $_SESSION['alert'] = [
             'type' => 'success',
             'msg' => 'Logout Successful.'

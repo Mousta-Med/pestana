@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 01, 2023 at 07:51 PM
+-- Generation Time: Feb 06, 2023 at 12:56 AM
 -- Server version: 10.4.27-MariaDB
--- PHP Version: 8.1.12
+-- PHP Version: 8.0.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -38,7 +38,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`admin_id`, `admin_username`, `admin_password`) VALUES
-(1, 'pestana', 'pestana');
+(1, 'pestana', '$2y$10$F3qkaUh82nAlmI3b4b0Hx.LuuOX7W9lwHVDtZcGr0CBTkMG2/EXkS');
 
 -- --------------------------------------------------------
 
@@ -69,6 +69,13 @@ CREATE TABLE `reservation` (
   `guests_number` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `reservation`
+--
+
+INSERT INTO `reservation` (`reservation_id`, `reservation_owner`, `check_in`, `check_out`, `room_id`, `room_type`, `guests_number`) VALUES
+(7, 'kjgkjg', '2023-02-07', '2023-02-06', 42, 'double', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -88,10 +95,10 @@ CREATE TABLE `room` (
 --
 
 INSERT INTO `room` (`romm_id`, `romm_type`, `suite_type`, `room_price`, `room_image`) VALUES
-(41, 'single', NULL, 234, 'single.jpg'),
+(41, 'single', NULL, 2344, 'single.jpg'),
 (42, 'double', NULL, 655, 'double.jpg'),
-(44, 'suite', 'bridal', 9889, 'triple.jpg'),
-(45, 'suite', 'standard', 3, 'triple.jpg'),
+(44, 'suite', 'bridal', 988, 'triple.jpg'),
+(45, 'Single', '', 100, 'triple.jpg'),
 (46, 'suite', 'junior', 4, 'triple.jpg'),
 (47, 'suite', 'presidential', 5, 'triple.jpg'),
 (48, 'suite', 'penthouse', 6, 'triple.jpg'),
@@ -118,7 +125,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `user_name`, `user_email`, `user_password`, `user_phone`) VALUES
-(1, 'mousta muhammed', 'travigo@gmail.com', '$2y$10$pAoYbW2sF21CDbxO.d00zuWpnHp/yVs7XZjS4pRZZZolFBvBBBwky', 644291265);
+(1, 'mousta muhammed', 'travigo@gmail.com', '$2y$10$pAoYbW2sF21CDbxO.d00zuWpnHp/yVs7XZjS4pRZZZolFBvBBBwky', 644291265),
+(2, 'kjgkjg', 'moustamuhammed@gmail.com', '$2y$10$pCrjVxorkFY4OlGzeAzXfOG/7EAlXZQXgw5dxj259wku0ZcFUcQ5G', 644291265);
 
 --
 -- Indexes for dumped tables
@@ -170,13 +178,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `guest`
 --
 ALTER TABLE `guest`
-  MODIFY `guest_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `guest_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `room`
@@ -188,7 +196,7 @@ ALTER TABLE `room`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

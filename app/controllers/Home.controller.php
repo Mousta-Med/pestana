@@ -14,88 +14,129 @@ class homecontroller
 
     public function showrooms()
     {
-        $this->app = new Room;
-        $reservation = new reservation;
-        $sql = $this->app->showrooms();
-        $sql1 = $reservation->showresrvation();
-        require "app/views/dashboard.view.php";
+        if (!isset($_SESSION['admin'])) {
+            $_SESSION['alert'] = [
+                'type' => 'danger',
+                'msg' => 'You Must Login First'
+            ];
+            header("location: /pestana/admin");
+        } else {
+            $this->app = new Room;
+            $reservation = new reservation;
+            $sql = $this->app->showrooms();
+            $sql1 = $reservation->showresrvation();
+            require "app/views/dashboard.view.php";
+        }
     }
     public function addform()
     {
-        // if (!isset($_SESSION['name']) && !isset($_SESSION['password'])) {
-        //     header("location: ../views/login.view.php?login=you must login");
-        // } else {
-        // }
-        require "app/views/add.view.php";
+        if (!isset($_SESSION['admin'])) {
+            $_SESSION['alert'] = [
+                'type' => 'danger',
+                'msg' => 'You Must Login First'
+            ];
+            header("location: /pestana/admin");
+        } else {
+            require "app/views/add.view.php";
+        }
     }
     public function updateform($id)
     {
-        // session_start();
-        // if (!isset($_SESSION['name']) && !isset($_SESSION['password'])) {
-        //     header("location: ../../view/login?login=you must login");
-        // } else {
-        // }
-        $this->app = new Room;
-        $sql =  $this->app->showroomid($id);
-        require "app/views/update.view.php";
+        if (!isset($_SESSION['admin'])) {
+            $_SESSION['alert'] = [
+                'type' => 'danger',
+                'msg' => 'You Must Login First'
+            ];
+            header("location: /pestana/admin");
+        } else {
+            $this->app = new Room;
+            $sql =  $this->app->showroomid($id);
+            require "app/views/update.view.php";
+        }
     }
     public function book($id)
     {
-        $this->app = new Room;
-        $sql =  $this->app->showroomid($id);
-        require "app/views/book.view.php";
+        if (!isset($_SESSION['email'])) {
+            $_SESSION['alert'] = [
+                'type' => 'danger',
+                'msg' => 'You Must Login First'
+            ];
+            header("location: /pestana/login");
+        } else {
+            $this->app = new Room;
+            $sql =  $this->app->showroomid($id);
+            require "app/views/book.view.php";
+        }
     }
     public function addrooms()
     {
-        $roomnum = $_POST['roomnum'];
-        $roomtype = $_POST['roomtype'];
-        $suitetype = $_POST['suitetype'];
-        $roomimage = $_FILES['image']['name'];
-        $oldpath = $_FILES['image']['tmp_name'];
-        $newpath = "public/img/" . $roomimage;
-        move_uploaded_file($oldpath, $newpath);
-
-        $this->app = new Room;
-        $requet = $this->app->addroom($roomtype, $suitetype, $roomnum, $roomimage);
-
-        if ($requet == true) {
-            header("location: ../dashboard");
+        if (!isset($_SESSION['admin'])) {
+            $_SESSION['alert'] = [
+                'type' => 'danger',
+                'msg' => 'You Must Login First'
+            ];
+            header("location: /pestana/admin");
         } else {
-            echo "error";
+            $roomnum = $_POST['roomnum'];
+            $roomtype = $_POST['roomtype'];
+            $suitetype = $_POST['suitetype'];
+            $roomimage = $_FILES['image']['name'];
+            $oldpath = $_FILES['image']['tmp_name'];
+            $newpath = "public/img/" . $roomimage;
+            move_uploaded_file($oldpath, $newpath);
+
+            $this->app = new Room;
+            $requet = $this->app->addroom($roomtype, $suitetype, $roomnum, $roomimage);
+
+            if ($requet == true) {
+                header("location: ../dashboard");
+            } else {
+                echo "error";
+            }
         }
     }
     public function updateroom($id)
     {
-        $roomnum = $_POST['roomnum'];
-        $roomtype = $_POST['roomtype'];
-        $suitetype = $_POST['suitetype'];
-        $roomimage = $_FILES['image']['name'];
-        $oldpath = $_FILES['image']['tmp_name'];
-        $newpath = "public/img/" . $roomimage;
-        move_uploaded_file($oldpath, $newpath);
-        $this->app = new Room;
-        $requet = $this->app->updateroom($roomtype, $roomnum, $suitetype, $roomimage, $id);
-        if ($requet == true) {
-            header("location: ../../dashboard");
+        if (!isset($_SESSION['admin'])) {
+            $_SESSION['alert'] = [
+                'type' => 'danger',
+                'msg' => 'You Must Login First'
+            ];
+            header("location: /pestana/admin");
         } else {
-            echo "error";
+            $roomnum = $_POST['roomnum'];
+            $roomtype = $_POST['roomtype'];
+            $suitetype = $_POST['suitetype'];
+            $roomimage = $_FILES['image']['name'];
+            $oldpath = $_FILES['image']['tmp_name'];
+            $newpath = "public/img/" . $roomimage;
+            move_uploaded_file($oldpath, $newpath);
+            $this->app = new Room;
+            $requet = $this->app->updateroom($roomtype, $roomnum, $suitetype, $roomimage, $id);
+            if ($requet == true) {
+                header("location: ../../dashboard");
+            } else {
+                echo "error";
+            }
         }
     }
     public function deleteroom($id)
     {
-        // session_start();
-        // if (isset($_SESSION['name']) && isset($_SESSION['password'])) {
-
-        // } else {
-        //     header("location: ../../home");
-        // }
-        if (filter_var($id, FILTER_VALIDATE_INT) === false) {
-            throw new Exception("This page are not exist !!!");
+        if (!isset($_SESSION['admin'])) {
+            $_SESSION['alert'] = [
+                'type' => 'danger',
+                'msg' => 'You Must Login First'
+            ];
+            header("location: /pestana/admin");
         } else {
-            $this->app = new Room;
-            $requet = $this->app->deleteroom($id);
-            if ($requet == true) {
-                header("location: ../../dashboard");
+            if (filter_var($id, FILTER_VALIDATE_INT) === false) {
+                throw new Exception("This page are not exist !!!");
+            } else {
+                $this->app = new Room;
+                $requet = $this->app->deleteroom($id);
+                if ($requet == true) {
+                    header("location: ../../dashboard");
+                }
             }
         }
     }
@@ -105,6 +146,8 @@ class homecontroller
             $roomtype = $_POST['roomtype'];
             $checkin = $_POST['checkin'];
             $checkout = $_POST['checkout'];
+            $_SESSION['check_in'] = $checkin;
+            $_SESSION['check_out'] = $checkout;
             if (isset($_POST['suitetype'])) {
                 $suitetype = $_POST['suitetype'];
             }
@@ -113,25 +156,25 @@ class homecontroller
         if (!isset($roomtype)) {
             $sql = $this->app->showbookrooms();
         } elseif ($roomtype === "suite") {
-            $sql = $this->app->showbooksuite($roomtype, $suitetype);
+            $sql = $this->app->showbooksuite($roomtype, $suitetype, $checkin, $checkout);
         } else {
             $sql = $this->app->showbookroom($roomtype, $checkin, $checkout);
         }
         require "app/views/rooms.view.php";
     }
-    public function addreservation()
+    public function addreservation($romm_id)
     {
+
         $this->app = new reservation;
-        $_SESSION["user"] = "test";
-        $reservationOwner = $_SESSION["user"];
+        $reservationOwner = $_SESSION['name'];
         $checkin = $_POST['check_in'];
         $checkout = $_POST['check_out'];
-        $roomnum = $_POST['roomnum'];
         $roomtype = $_POST['roomtype'];
         $guestsnb = $_POST['guests'];
-        $this->app->ownreservation($roomnum);
-        $requet = $this->app->addreservation($reservationOwner, $checkin, $checkout, $roomnum, $roomtype, $guestsnb);
-
+        $requet = $this->app->addreservation($reservationOwner, $checkin, $checkout, $romm_id, $roomtype, $guestsnb);
+        $query =  $this->app->ownreservation($romm_id);
+        $row = mysqli_fetch_assoc($query);
+        $reservation_id = $row['reservation_id'];
         if (isset($guestsnb)) {
             if ($guestsnb > 0) {
                 for ($i = 1; $i <= $guestsnb; $i++) {
@@ -141,17 +184,52 @@ class homecontroller
 
                 $i = 1;
                 while ($i <= $guestsnb) {
-                    $this->app->addguests($roomnum, ${'guestname' . $i}, ${'dob' . $i});
+                    $this->app->addguests($reservation_id, ${'guestname' . $i}, ${'dob' . $i});
                     $i++;
                 }
             }
         }
+        unset($_SESSION['check_in']);
+        unset($_SESSION['check_out']);
 
 
         if ($requet == true) {
-            header("location: /pestana/dashboard");
+            $_SESSION['alert'] = [
+                'type' => 'success',
+                'msg' => 'Room Boked Successfuly'
+            ];
+            header("location: /pestana/");
         } else {
             echo "error";
+        }
+    }
+    public function canclereservation($reservation_id)
+    {
+        $this->app = new reservation;
+        $requet = $this->app->canclereservation($reservation_id);
+        if ($requet == true) {
+            $_SESSION['alert'] = [
+                'type' => 'success',
+                'msg' => 'Reservation canceled Successfuly'
+            ];
+            header("location: /pestana/reservation");
+        } else {
+            echo "error";
+        }
+    }
+    public function profile()
+    {
+        if (!isset($_SESSION['email'])) {
+            $_SESSION['alert'] = [
+                'type' => 'danger',
+                'msg' => 'You Must Login First'
+            ];
+            header("location: /pestana/login");
+        } else {
+
+            $this->app = new reservation;
+            $sql = $this->app->showuserresrvation($_SESSION['name']);
+            require "app/views/profile.view.php";
         }
     }
 }

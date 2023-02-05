@@ -5,101 +5,54 @@ require_once "app/models/Db.class.php";
 
 
 
-class usercontroller
+class admincontroller
 {
-    private $user;
-
-    public function signup()
-    {
-
-        $this->user = new user;
-
-        $name = $_POST['user_name'];
-        $email = $_POST['user_email'];
-        $phone = $_POST['user_phone'];
-        $password = password_hash($_POST['user_password'], PASSWORD_BCRYPT);
-        $result = $this->user->login($email);
-
-        if (mysqli_num_rows($result) > 0) {
-            $_SESSION['alert'] = [
-                'type' => 'danger',
-                'msg' => 'This Email Already Used.'
-            ];
-            header('Location: /pestana/signup');
-        } else {
-            $this->user->signup($name, $email, $phone, $password);
-            $_SESSION['alert'] = [
-                'type' => 'success',
-                'msg' => 'Compte Created Successfuly.'
-            ];
-            header('Location: /pestana/login');
-        }
-    }
-
+    private $admin;
 
     public function loginform()
     {
-        if (isset($_SESSION['email'])) {
+        if (isset($_SESSION['admin'])) {
             $_SESSION['alert'] = [
                 'type' => 'danger',
                 'msg' => 'You Must Logout First'
             ];
             header("location: /pestana/");
         } else {
-            require "app/views/login.view.php";
-        }
-    }
-    public function signupform()
-    {
-        if (isset($_SESSION['email'])) {
-            $_SESSION['alert'] = [
-                'type' => 'danger',
-                'msg' => 'You Must Logout First'
-            ];
-            header("location: /pestana/");
-        } else {
-            require "app/views/signup.view.php";
+            require "app/views/admin_login.view.php";
         }
     }
     public function login()
     {
 
-        $email = $_POST['email'];
+        $username = $_POST['username'];
         $password = $_POST['password'];
-        $this->user = new user;
-        $result = $this->user->login($email);
+        $this->admin = new Admin;
+        $result = $this->admin->login($username);
         $row = $result->fetch_assoc();
-        $storedHash = $row['user_password'];
-        $name =  $row['user_name'];
-
-        $id = $row['user_id'];
+        $storedHash = $row['admin_password'];
         if (password_verify($password, $storedHash)) {
             session_start();
-            $_SESSION['email'] = $email;
-            $_SESSION['id'] = $id;
-            $_SESSION['name'] = $name;
+            $_SESSION['admin'] = $username;
             $_SESSION['alert'] = [
                 'type' => 'success',
                 'msg' => 'Login Successful.'
             ];
-            header('Location: /pestana/');
+            header('Location: /pestana/dashboard');
         } else {
             $_SESSION['alert'] = [
                 'type' => 'danger',
-                'msg' => 'Invalid Email Or Password.'
+                'msg' => 'Invalid Username Or Password.'
             ];
-            header('Location: /pestana/login');
+            header('Location: /pestana/admin');
         }
     }
     public function logout()
     {
-        session_unset();
-        session_destroy();
-        session_start();
+        unset($_SESSION['admin']);
         $_SESSION['alert'] = [
             'type' => 'success',
             'msg' => 'Logout Successful.'
         ];
-        header('Location: /pestana/login');
+        header('Location: /pestana/');
     }
 }

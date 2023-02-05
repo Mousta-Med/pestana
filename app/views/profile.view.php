@@ -39,6 +39,61 @@
             </div>
         </div>
     </nav>
+    <!-- conatiner -->
+    <main>
+        <div class="profile">
+            <?php
+            if (!empty($_SESSION['alert'])) {
+            ?>
+                <div class="msg">
+                    <div class="alert alert-<?= $_SESSION['alert']['type'] ?>" role="alert">
+                        <?= $_SESSION['alert']['msg'] ?>
+                    </div>
+                </div>
+            <?php
+            }
+            unset($_SESSION['alert']);
+            ?>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header bg-primary text-white">
+                            <h3 class="card-title">Reservations</h3>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Check in</th>
+                                        <th>Check out</th>
+                                        <th>Room Type</th>
+                                        <th>Guests</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    while ($reservations = mysqli_fetch_assoc($sql)) { ?>
+                                        <tr>
+                                            <td><?= $reservations['check_in'] ?></td>
+                                            <td><?= $reservations['check_out'] ?></td>
+                                            <td><?= $reservations['room_type'] ?></td>
+                                            <td><?= $reservations['guests_number'] ?></td>
+                                            <td>
+                                                <a href="reservation/update/<?= $reservations['reservation_id'] ?>"><button type="button" class="btn btn-secondary">Edit</button></a>
+                                                <a href="reservation/cancel/<?= $reservations['reservation_id'] ?>"><button type=" button" class="btn btn-danger">Cancel</button></a>
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
     <!--  footer  -->
     <footer class=" text-center text-white bg-black">
         <div class="footer-container">

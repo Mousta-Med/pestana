@@ -78,7 +78,7 @@
                 <button class="btn btn-primary" type="submit">Search Now</button>
             </form>
             <div class="guests" class="d-none">
-                <input id="nbpersonne" type="hidden" min="0" max="6" disabled>
+                <input id="nbpersonne" type="hidden" disabled>
             </div>
             <div class="rooms">
                 <?php

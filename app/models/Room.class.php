@@ -23,39 +23,54 @@ class Room extends Db
     {
         $connect = new Db;
         $conn = $connect->connection();
-        $sql = $conn->query("SELECT room.* FROM room
-        WHERE romm_type = '$room_type' AND romm_id NOT IN (
+        $sql = $conn->prepare("SELECT room.* FROM room
+        WHERE romm_type = ? AND romm_id NOT IN (
             SELECT room_id FROM reservation 
             WHERE (
-                ('$checkin' BETWEEN check_in AND check_out) 
-                OR ('$checkout' BETWEEN check_in AND check_out)
-                OR (check_in BETWEEN '$checkin' AND '$checkout')
+                (? BETWEEN check_in AND check_out) 
+                OR (? BETWEEN check_in AND check_out)
+                OR (check_in BETWEEN ? AND ?)
             )
         )");
-        // $sql = $conn->query("SELECT * FROM room WHERE room_reservation = 0 AND romm_type = '$room_type'");
-        return $sql;
+        $sql->bind_param("sssss", $room_type, $checkin, $checkout, $checkin, $checkout);
+        $sql->execute();
+        $result = $sql->get_result();
+        return $result;
     }
-    public function showbooksuite($room_type, $suitetype)
+    public function showbooksuite($room_type, $suitetype, $checkin, $checkout)
     {
         $connect = new Db;
         $conn = $connect->connection();
-        $sql = $conn->query("SELECT * FROM room WHERE romm_type = '$room_type' AND suite_type = '$suitetype' AND romm_id NOT IN ( SELECT room_id FROM reservation )");
-        // $sql = $conn->query("SELECT * FROM room WHERE room_reservation = 0 AND romm_type = '$room_type' AND suite_type = '$suitetype'");
-        return $sql;
+        $sql = $conn->prepare("SELECT room.* FROM room
+        WHERE romm_type = ? AND suite_type = ? AND  romm_id NOT IN (
+            SELECT room_id FROM reservation 
+            WHERE (
+                (? BETWEEN check_in AND check_out) 
+                OR (? BETWEEN check_in AND check_out)
+                OR (check_in BETWEEN ? AND ?)
+            )
+        )");
+        $sql->bind_param("ssssss", $room_type, $suitetype, $checkin, $checkout, $checkin, $checkout);
+        $sql->execute();
+        $result = $sql->get_result();
+        return $result;
     }
 
     public function showroomid($id)
     {
         $connect = new Db;
         $conn = $connect->connection();
-        $sql = $conn->query("SELECT * FROM room WHERE romm_id = $id");
-        return $sql;
+        $sql = $conn->prepare("SELECT * FROM room WHERE romm_id = ?");
+        $sql->bind_param("i", $id);
+        $sql->execute();
+        $result = $sql->get_result();
+        return $result;
     }
     public function addroom($roomtype, $suitetype, $roomnum, $roomimage)
     {
         $connect = new Db;
         $conn = $connect->connection();
-        $stmt = $conn->prepare("INSERT INTO room (romm_type, suite_type, room_number, room_image) VALUES (?, ?, ?, ?)");
+        $stmt = $conn->prepare("INSERT INTO room (romm_type, suite_type, room_price, room_image) VALUES (?, ?, ?, ?)");
         $stmt->bind_param('ssis', $roomtype, $suitetype, $roomnum, $roomimage);
         $result = $stmt->execute();
         if ($result == true) {
@@ -70,10 +85,10 @@ class Room extends Db
         $connect = new Db;
         $conn = $connect->connection();
         if (empty($roomimage)) {
-            $stmt = $conn->prepare("UPDATE room SET romm_type = ?, room_number = ?, suite_type = ? WHERE romm_id = ?");
+            $stmt = $conn->prepare("UPDATE room SET romm_type = ?, room_price = ?, suite_type = ? WHERE romm_id = ?");
             $stmt->bind_param('sisi', $roomtype, $roomnum, $suitetype, $id);
         } else {
-            $stmt = $conn->prepare("UPDATE room SET romm_type = ?, room_number = ?, suite_type = ?, room_image = ? WHERE romm_id = ?");
+            $stmt = $conn->prepare("UPDATE room SET romm_type = ?, room_price = ?, suite_type = ?, room_image = ? WHERE romm_id = ?");
             $stmt->bind_param('sissi', $roomtype, $roomnum, $suitetype, $roomimage, $id);
         }
         $result = $stmt->execute();

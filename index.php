@@ -2,8 +2,10 @@
 
 require_once "app/controllers/Home.controller.php";
 require_once "app/controllers/User.controller.php";
+require_once "app/controllers/Admin.controller.php";
 $homecontroller = new homecontroller;
 $Usercontroller = new usercontroller;
+$Admincontroller = new admincontroller;
 session_start();
 
 
@@ -47,8 +49,24 @@ if (empty($_GET['page'])) {
                 require "app/views/404.view.php";
             }
             break;
+        case "admin":
+            if (empty($URL[1])) {
+                $Admincontroller->loginform();
+            } elseif ($URL[1] == "login") {
+                $Admincontroller->login();
+            } elseif ($URL[1] == "logout") {
+                $Admincontroller->logout();
+            } else {
+                require "app/views/404.view.php";
+            }
+            break;
         case "addreservation":
-            $homecontroller->addreservation();
+            $id = $URL[1];
+            if (filter_var($id, FILTER_VALIDATE_INT) === false) {
+                require "app/views/404.view.php";
+            } else {
+                $homecontroller->addreservation($id);
+            }
             break;
         case "signup":
             $Usercontroller->signupform();
@@ -81,6 +99,18 @@ if (empty($_GET['page'])) {
             break;
         case "rooms":
             $homecontroller->rooms();
+            break;
+        case "reservation":
+            if (empty($URL[1])) {
+                $homecontroller->profile();
+            } elseif ($URL[1] == "cancel") {
+                $id = $URL[2];
+                $homecontroller->canclereservation($id);
+            } elseif ($URL[1] == "update") {
+            } else {
+                require "app/views/404.view.php";
+            }
+            break;
             break;
         default:
             require "app/views/404.view.php";

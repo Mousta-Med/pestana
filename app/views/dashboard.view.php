@@ -17,6 +17,7 @@
                 <div class="card-header bg-primary text-white">
                     <h3 class="card-title">Dashboard</h3>
                 </div>
+                <a href="admin/logout"><button class="btn btn-danger">Log Out</button></a>
                 <div class="card-body">
                     <table class="table table-striped table-bordered">
                         <thead>
@@ -24,7 +25,7 @@
                                 <th>id</th>
                                 <th>Room Type</th>
                                 <th>Suite Type</th>
-                                <th>Room Number</th>
+                                <th>Room Price</th>
                                 <th>Room image</th>
                                 <th>Actions</th>
                             </tr>
@@ -36,7 +37,7 @@
                                     <td><?= $rooms['romm_id'] ?></td>
                                     <td><?= $rooms['romm_type'] ?></td>
                                     <td><?= $rooms['suite_type'] ?></td>
-                                    <td><?= $rooms['room_number'] ?></td>
+                                    <td><?= $rooms['room_price'] ?></td>
                                     <td><img src="/pestana/public/img/<?= $rooms['room_image'] ?>" width="50" height="50" style="border-radius:5px;"></td>
                                     <td>
                                         <a href="dashboard/update/<?= $rooms['romm_id'] ?>"><button type="button" class="btn btn-secondary mr-2">Edit</button></a>
@@ -69,7 +70,7 @@
                                 <th>Reservation Owner</th>
                                 <th>Check in</th>
                                 <th>Check out</th>
-                                <th>Room Number</th>
+                                <th>Room Id</th>
                                 <th>Room Type</th>
                                 <th>Guests</th>
                             </tr>
@@ -82,7 +83,7 @@
                                     <td><?= $reservations['reservation_owner'] ?></td>
                                     <td><?= $reservations['check_in'] ?></td>
                                     <td><?= $reservations['check_out'] ?></td>
-                                    <td><?= $reservations['room_number'] ?></td>
+                                    <td><?= $reservations['room_id'] ?></td>
                                     <td><?= $reservations['room_type'] ?></td>
                                     <td><?= $reservations['guests_number'] ?></td>
 

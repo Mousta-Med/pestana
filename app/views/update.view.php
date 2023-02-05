@@ -21,8 +21,8 @@
         while ($rooms = mysqli_fetch_assoc($sql)) { ?>
             <form action="../updateroom/<?= $rooms['romm_id'] ?>" method="post" enctype="multipart/form-data">
                 <div class="form-group">
-                    <label for="room-number">Room Number:</label>
-                    <input type="number" class="form-control" id="room-number" name="roomnum" value="<?= $rooms['room_number'] ?>">
+                    <label for="room-number">Room Price:</label>
+                    <input type="number" class="form-control" id="room-number" name="roomnum" value="<?= $rooms['room_price'] ?>">
                 </div>
                 <div class="form-group">
                     <label for="room-type">Room Type:</label>
