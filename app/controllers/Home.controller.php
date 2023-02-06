@@ -156,6 +156,8 @@ class homecontroller
         $this->app = new Room;
         if (!isset($roomtype)) {
             $sql = $this->app->showbookrooms();
+            unset($_SESSION['check_in']);
+            unset($_SESSION['check_out']);
         } elseif ($roomtype === "suite") {
             $sql = $this->app->showbooksuite($roomtype, $suitetype, $checkin, $checkout);
         } else {
@@ -232,6 +234,21 @@ class homecontroller
             $this->app = new reservation;
             $sql = $this->app->showuserresrvation($_SESSION['name']);
             require "app/views/profile.view.php";
+        }
+    }
+
+    public function updatereservationform($id)
+    {
+        if (!isset($_SESSION['email'])) {
+            $_SESSION['alert'] = [
+                'type' => 'danger',
+                'msg' => 'You Must Login First'
+            ];
+            header("location: /pestana/login");
+        } else {
+            $this->app = new reservation;
+            $sql = $this->app->showresrvationid($id);
+            require "app/views/reservation_update.view.php";
         }
     }
 }

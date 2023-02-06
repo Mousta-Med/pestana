@@ -107,6 +107,13 @@ if (empty($_GET['page'])) {
                 $id = $URL[2];
                 $homecontroller->canclereservation($id);
             } elseif ($URL[1] == "update") {
+                if (empty($URL[3])) {
+                    $id = $URL[2];
+                    $homecontroller->updatereservationform($id);
+                } elseif ($URL[3] == "add") {
+                } else {
+                    require "app/views/404.view.php";
+                }
             } else {
                 require "app/views/404.view.php";
             }
