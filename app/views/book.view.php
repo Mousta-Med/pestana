@@ -56,14 +56,27 @@
                 <?php
                 $rooms = mysqli_fetch_assoc($sql) ?>
                 <div class="d-flex">
-                    <div>
-                        <label>Check-in Date :</label>
-                        <input type="date" name="check_in" value="<?= $_SESSION['check_in'] ?>" readonly>
-                    </div>
-                    <div>
-                        <label>Check-out Date :</label>
-                        <input type="date" name="check_out" value="<?= $_SESSION['check_out'] ?>" readonly>
-                    </div>
+                    <?php
+                    if (isset($_SESSION['check_in'])) {
+                    ?>
+                        <div>
+                            <label>Check-in Date :</label>
+                            <input type="date" name="check_in" value="<?= $_SESSION['check_in'] ?>" readonly>
+                        </div>
+                        <div>
+                            <label>Check-out Date :</label>
+                            <input type="date" name="check_out" value="<?= $_SESSION['check_out'] ?>" readonly>
+                        </div>
+                    <?php } else { ?>
+                        <div>
+                            <label>Check-in Date :</label>
+                            <input type="date" name="check_in" value="">
+                        </div>
+                        <div>
+                            <label>Check-out Date :</label>
+                            <input type="date" name="check_out" value="">
+                        </div>
+                    <?php } ?>
                 </div>
                 <label>Room Type :</label>
                 <input type="txet" id="roomtype" value="<?= $rooms['romm_type'] ?>" name="roomtype" readonly>

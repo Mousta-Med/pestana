@@ -16,6 +16,11 @@
         <h1>Update a Room</h1>
         <a href="../../dashboard"><button class="btn btn-danger">Back</button></a>
         <br>
+        <input type="hidden" id="checkin">
+        <input type="hidden" id="checkout">
+        <div class="guests"></div>
+        <div id="nbpersonne"></div>
+        <div id="image"></div>
         <br>
         <?php
         while ($rooms = mysqli_fetch_assoc($sql)) { ?>

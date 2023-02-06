@@ -148,10 +148,11 @@ class homecontroller
             $checkout = $_POST['checkout'];
             $_SESSION['check_in'] = $checkin;
             $_SESSION['check_out'] = $checkout;
-            if (isset($_POST['suitetype'])) {
-                $suitetype = $_POST['suitetype'];
-            }
         }
+        if (isset($_POST['suitetype'])) {
+            $suitetype = $_POST['suitetype'];
+        }
+
         $this->app = new Room;
         if (!isset($roomtype)) {
             $sql = $this->app->showbookrooms();
@@ -160,6 +161,7 @@ class homecontroller
         } else {
             $sql = $this->app->showbookroom($roomtype, $checkin, $checkout);
         }
+
         require "app/views/rooms.view.php";
     }
     public function addreservation($romm_id)

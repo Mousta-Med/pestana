@@ -10,92 +10,93 @@
     <title>Dashboard</title>
 </head>
 
-<div class="container-fluid mt-4">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header bg-primary text-white">
-                    <h3 class="card-title">Dashboard</h3>
-                </div>
-                <a href="admin/logout"><button class="btn btn-danger">Log Out</button></a>
-                <div class="card-body">
-                    <table class="table table-striped table-bordered">
-                        <thead>
-                            <tr>
-                                <th>id</th>
-                                <th>Room Type</th>
-                                <th>Suite Type</th>
-                                <th>Room Price</th>
-                                <th>Room image</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            while ($rooms = mysqli_fetch_assoc($sql)) { ?>
+<body>
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="card-title">Dashboard</h3>
+                    </div>
+                    <a href="admin/logout"><button class="btn btn-danger">Log Out</button></a>
+                    <div class="card-body">
+                        <table class="table table-striped table-bordered">
+                            <thead>
                                 <tr>
-                                    <td><?= $rooms['romm_id'] ?></td>
-                                    <td><?= $rooms['romm_type'] ?></td>
-                                    <td><?= $rooms['suite_type'] ?></td>
-                                    <td><?= $rooms['room_price'] ?></td>
-                                    <td><img src="/pestana/public/img/<?= $rooms['room_image'] ?>" width="50" height="50" style="border-radius:5px;"></td>
-                                    <td>
-                                        <a href="dashboard/update/<?= $rooms['romm_id'] ?>"><button type="button" class="btn btn-secondary mr-2">Edit</button></a>
-                                        <a href="dashboard/delete/<?= $rooms['romm_id'] ?>"><button type=" button" class="btn btn-danger">Delete</button></a>
-                                    </td>
+                                    <th>id</th>
+                                    <th>Room Type</th>
+                                    <th>Suite Type</th>
+                                    <th>Room Price</th>
+                                    <th>Room image</th>
+                                    <th>Actions</th>
                                 </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                <?php
+                                while ($rooms = mysqli_fetch_assoc($sql)) { ?>
+                                    <tr>
+                                        <td><?= $rooms['romm_id'] ?></td>
+                                        <td><?= $rooms['romm_type'] ?></td>
+                                        <td><?= $rooms['suite_type'] ?></td>
+                                        <td><?= $rooms['room_price'] ?></td>
+                                        <td><img src="/pestana/public/img/<?= $rooms['room_image'] ?>" width="50" height="50" style="border-radius:5px;"></td>
+                                        <td>
+                                            <a href="dashboard/update/<?= $rooms['romm_id'] ?>"><button type="button" class="btn btn-secondary mr-2">Edit</button></a>
+                                            <a href="dashboard/delete/<?= $rooms['romm_id'] ?>"><button type=" button" class="btn btn-danger">Delete</button></a>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row mt-4">
-        <div class="col-md-12 text-right">
-            <a href="dashboard/add"><button type="button" class="btn btn-primary">Add Room</button></a>
+        <div class="row mt-4">
+            <div class="col-md-12 text-right">
+                <a href="dashboard/add"><button type="button" class="btn btn-primary">Add Room</button></a>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header bg-primary text-white">
-                    <h3 class="card-title">Reservations</h3>
-                </div>
-                <div class="card-body">
-                    <table class="table table-striped table-bordered">
-                        <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Reservation Owner</th>
-                                <th>Check in</th>
-                                <th>Check out</th>
-                                <th>Room Id</th>
-                                <th>Room Type</th>
-                                <th>Guests</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            while ($reservations = mysqli_fetch_assoc($sql1)) { ?>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="card-title">Reservations</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped table-bordered">
+                            <thead>
                                 <tr>
-                                    <td><?= $reservations['reservation_id'] ?></td>
-                                    <td><?= $reservations['reservation_owner'] ?></td>
-                                    <td><?= $reservations['check_in'] ?></td>
-                                    <td><?= $reservations['check_out'] ?></td>
-                                    <td><?= $reservations['room_id'] ?></td>
-                                    <td><?= $reservations['room_type'] ?></td>
-                                    <td><?= $reservations['guests_number'] ?></td>
+                                    <th>Id</th>
+                                    <th>Reservation Owner</th>
+                                    <th>Check in</th>
+                                    <th>Check out</th>
+                                    <th>Room Id</th>
+                                    <th>Room Type</th>
+                                    <th>Guests</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                while ($reservations = mysqli_fetch_assoc($sql1)) { ?>
+                                    <tr>
+                                        <td><?= $reservations['reservation_id'] ?></td>
+                                        <td><?= $reservations['reservation_owner'] ?></td>
+                                        <td><?= $reservations['check_in'] ?></td>
+                                        <td><?= $reservations['check_out'] ?></td>
+                                        <td><?= $reservations['room_id'] ?></td>
+                                        <td><?= $reservations['room_type'] ?></td>
+                                        <td><?= $reservations['guests_number'] ?></td>
 
-                                </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 
 </body>

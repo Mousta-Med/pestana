@@ -52,7 +52,7 @@
     </nav>
     <div class="bookcontainer">
         <div>
-            <h1 class="mb-5">Search a Room</h1>
+            <h1 class="pt-5 mb-5">Search for a Room</h1>
             <form class="search-room mb-5" action="" method="post">
                 <label>Check-in Date:</label>
                 <input type="date" id="checkin" name="checkin" required>

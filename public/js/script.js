@@ -27,6 +27,7 @@ function myfunc() {
     } else {
       selectTwo.setAttribute("disabled", "disabled");
       selectTwo.classList.add("d-none");
+      console.log("hide");
       suiteSelectLabel.classList.add("d-none");
     }
   });
@@ -49,10 +50,10 @@ function myfunc() {
     }
   });
 }
+var currentDate = new Date().toISOString().slice(0, 10);
+let checkin = document.querySelector("#checkin");
+let checkout = document.querySelector("#checkout");
 if (checkin) {
-  var currentDate = new Date().toISOString().slice(0, 10);
-  let checkin = document.querySelector("#checkin");
-  let checkout = document.querySelector("#checkout");
   checkin.setAttribute("min", currentDate);
   checkout.setAttribute("min", currentDate);
   checkin.addEventListener("change", (e) => {
