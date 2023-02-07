@@ -237,7 +237,7 @@ class homecontroller
         }
     }
 
-    public function updatereservationform($id)
+    public function updatereservationform($reservation_id)
     {
         if (!isset($_SESSION['email'])) {
             $_SESSION['alert'] = [
@@ -247,7 +247,7 @@ class homecontroller
             header("location: /pestana/login");
         } else {
             $this->app = new reservation;
-            $sql = $this->app->showresrvationid($id);
+            $sql = $this->app->showresrvationid($reservation_id);
             require "app/views/reservation_update.view.php";
         }
     }

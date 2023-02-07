@@ -24,8 +24,7 @@ h1 {
   justify-content: center;
   height: 100vh;
   width: 100%;
-  background: url(https://img.freepik.com/free-photo/beautiful-umbrella-chair-around-swimming-pool-hotel-resort_74190-1006.jpg?w=996&t=st=1671440447~exp=1671441047~hmac=f8db8a004c8dc2cb36d158474a21e28e84de48d237c8d12c84eb7207070cddc4)
-    no-repeat center;
+  background: url(https://img.freepik.com/free-photo/beautiful-umbrella-chair-around-swimming-pool-hotel-resort_74190-1006.jpg?w=996&t=st=1671440447~exp=1671441047~hmac=f8db8a004c8dc2cb36d158474a21e28e84de48d237c8d12c84eb7207070cddc4) no-repeat center;
   background-size: cover;
 }
 
@@ -91,8 +90,7 @@ h1 {
   justify-content: space-evenly;
   height: 750px;
   width: 100%;
-  background: url(https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80)
-    no-repeat center;
+  background: url(https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80) no-repeat center;
   background-size: cover;
   flex-direction: column;
 }
@@ -281,17 +279,27 @@ input[type="submit"]:hover {
   flex-direction: column;
   height: 100vh;
   width: 100%;
-  background: url(https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80)
-    no-repeat center;
+  background: url(https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80) no-repeat center;
+  background-size: cover;
+}
+
+.update_reservation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  background: url(https://images.unsplash.com/photo-1561501900-3701fa6a0864?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bHV4dXJ5JTIwaG90ZWx8ZW58MHx8MHx8&w=1000&q=80) no-repeat center;
   background-size: cover;
 }
 
 .bookcontainer {
   width: 100%;
-  background: url(https://img.freepik.com/free-photo/loft-living-room-interior-design_53876-145499.jpg?w=1380&t=st=1673899524~exp=1673900124~hmac=cb601822ef93584c66e955e2e86c94a131fa8b2efd4d9e57ed2a831ee1d63967)
-    no-repeat center;
+  background: url(https://img.freepik.com/free-photo/loft-living-room-interior-design_53876-145499.jpg?w=1380&t=st=1673899524~exp=1673900124~hmac=cb601822ef93584c66e955e2e86c94a131fa8b2efd4d9e57ed2a831ee1d63967) no-repeat center;
   background-size: cover;
 }
+
 .profile {
   display: flex;
   flex-direction: column;
@@ -299,8 +307,7 @@ input[type="submit"]:hover {
   justify-content: center;
   height: 100vh;
   width: 100%;
-  background: url(https://images.unsplash.com/photo-1561501900-3701fa6a0864?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bHV4dXJ5JTIwaG90ZWx8ZW58MHx8MHx8&w=1000&q=80)
-    no-repeat center;
+  background: url(https://images.unsplash.com/photo-1561501900-3701fa6a0864?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bHV4dXJ5JTIwaG90ZWx8ZW58MHx8MHx8&w=1000&q=80) no-repeat center;
   background-size: cover;
 }
 

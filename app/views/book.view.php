@@ -70,11 +70,11 @@
                     <?php } else { ?>
                         <div>
                             <label>Check-in Date :</label>
-                            <input type="date" name="check_in" value="" required>
+                            <input type="date" name="check_in" id="checkin" value="" required>
                         </div>
                         <div>
                             <label>Check-out Date :</label>
-                            <input type="date" name="check_out" value="" required>
+                            <input type="date" name="check_out" id="checkout" value="" required>
                         </div>
                     <?php } ?>
                 </div>

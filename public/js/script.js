@@ -60,3 +60,4 @@ if (checkin) {
     checkout.setAttribute("min", e.target.value);
   });
 }
+

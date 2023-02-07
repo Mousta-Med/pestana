@@ -11,7 +11,7 @@
     <title>Profile</title>
 </head>
 
-<body>
+<body onload="myfunc()">
     <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-black">
         <div class="container">
             <a class="navbar-brand" href="">Pestana CR7</a>
@@ -40,21 +40,60 @@
         </div>
     </nav>
     <!-- conatiner -->
-    <main>
-        <div class="profile">
-            <?php
-            if (!empty($_SESSION['alert'])) {
-            ?>
-                <div class="msg">
-                    <div class="alert alert-<?= $_SESSION['alert']['type'] ?>" role="alert">
-                        <?= $_SESSION['alert']['msg'] ?>
+    <main class="update_reservation">
+        <?php
+        if (!empty($_SESSION['alert'])) {
+        ?>
+            <div class="msg">
+                <div class="alert alert-<?= $_SESSION['alert']['type'] ?>" role="alert">
+                    <?= $_SESSION['alert']['msg'] ?>
+                </div>
+            </div>
+        <?php
+        }
+        unset($_SESSION['alert']);
+        ?>
+        <div class="reservation-form">
+            <div id="image">
+                <img src="https://images.unsplash.com/photo-1606046604972-77cc76aee944?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80" style="border-top-left-radius:10px;border-bottom-left-radius:10px;" width="370" height="570">
+            </div>
+
+            <form action="/pestana/addreservation/<?= $id ?>" method="post" class="d-flex flex-column align-items-center justify-content-center">
+                <?php
+                $reservation = mysqli_fetch_assoc($sql) ?>
+                <div class="d-flex">
+                    <div>
+                        <label>Check-in Date :</label>
+                        <input type="date" name="check_in" value="<?= $reservation['check_in'] ?>">
+                    </div>
+                    <div>
+                        <label>Check-out Date :</label>
+                        <input type="date" name="check_out" value="<?= $reservation['check_in'] ?>">
                     </div>
                 </div>
-            <?php
-            }
-            unset($_SESSION['alert']);
-            ?>
+                <label>Room Type :</label>
+                <input type="txet" id="roomtype" value="<?= $reservation['room_type'] ?>" name="roomtype" readonly>
 
+                <label id="suite-label">Suite Type</label>
+                <input type="text" id="SuiteType" value="<?= $rooms['suite_type'] ?>" readonly>
+
+                <div class="d-flex">
+                    <!-- <div>
+                        <label>Room Price :</label>
+                        <input type="number" value="<?= $reservation['room_price'] ?>" name="roomnum" min="1" max="6" readonly>
+                    </div> -->
+                    <div class="guests">
+                        <label>Number Of Guest:</label>
+                        <input id="nbpersonne" type="number" name="guests" value="<?= $reservation['guests_number'] ?>" readonly>
+                    </div>
+                </div>
+                <div class="container d-flex flex-column align-items-center justify-content-center">
+                    <div class="guests-form row">
+
+                    </div>
+                </div>
+                <button class="btn btn-success">Book Now</button>
+            </form>
         </div>
     </main>
     <!--  footer  -->

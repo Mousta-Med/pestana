@@ -78,7 +78,7 @@ class reservation extends Db
         $connect = new Db;
         $conn = $connect->connection();
         $stmt = $conn->prepare("SELECT * FROM reservation WHERE reservation_id = ?");
-        $stmt->bind_param('s', $reservation_id);
+        $stmt->bind_param('i', $reservation_id);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result;
