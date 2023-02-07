@@ -111,6 +111,8 @@ if (empty($_GET['page'])) {
                     $id = $URL[2];
                     $homecontroller->updatereservationform($id);
                 } elseif ($URL[3] == "add") {
+                    $id = $URL[2];
+                    $homecontroller->updatereservation($id);
                 } else {
                     require "app/views/404.view.php";
                 }

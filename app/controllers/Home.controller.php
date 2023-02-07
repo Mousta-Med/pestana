@@ -251,4 +251,42 @@ class homecontroller
             require "app/views/reservation_update.view.php";
         }
     }
+    public function updatereservation($reservation_id)
+    {
+        $checkin = $_POST['check_in'];
+        $checkout = $_POST['check_out'];
+        $roomtype = $_POST['roomtype'];
+        $room_id = $_POST['roomid'];
+        if (!isset($_SESSION['email'])) {
+            $_SESSION['alert'] = [
+                'type' => 'danger',
+                'msg' => 'You Must Login First'
+            ];
+            header("location: /pestana/login");
+        } else {
+            $this->app = new reservation;
+            $app = new Room;
+            $sql1 = $app->showupdateroom($roomtype, $checkin, $checkout, $room_id);
+            $val = mysqli_num_rows($sql1);
+            if ($val > 0) {
+                $sql = $this->app->updatereservation($checkin, $checkout, $reservation_id);
+            } else {
+                $sql = false;
+            }
+            if ($sql == true) {
+                $_SESSION['alert'] = [
+                    'type' => 'success',
+                    'msg' => 'Rservation Updated Successfuly'
+                ];
+                header("location: /pestana/reservation");
+            } else {
+                $_SESSION['alert'] = [
+                    'type' => 'danger',
+                    'msg' => 'Take Another Date'
+                ];
+                header("location: /pestana/reservation/update/$reservation_id");
+            }
+        }
+    }
+} {
 }

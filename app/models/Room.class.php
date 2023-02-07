@@ -37,6 +37,24 @@ class Room extends Db
         $result = $sql->get_result();
         return $result;
     }
+    public function showupdateroom($room_type, $checkin, $checkout, $id)
+    {
+        $connect = new Db;
+        $conn = $connect->connection();
+        $sql = $conn->prepare("SELECT room.* FROM room
+        WHERE romm_type = ? AND romm_id = ? AND romm_id NOT IN (
+            SELECT room_id FROM reservation 
+            WHERE (
+                (? BETWEEN check_in AND check_out) 
+                OR (? BETWEEN check_in AND check_out)
+                OR (check_in BETWEEN ? AND ?)
+            )
+        )");
+        $sql->bind_param("sissss", $room_type, $id, $checkin, $checkout, $checkin, $checkout);
+        $sql->execute();
+        $result = $sql->get_result();
+        return $result;
+    }
     public function showbooksuite($room_type, $suitetype, $checkin, $checkout)
     {
         $connect = new Db;

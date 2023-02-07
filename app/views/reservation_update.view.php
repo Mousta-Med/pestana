@@ -58,42 +58,41 @@
                 <img src="https://images.unsplash.com/photo-1606046604972-77cc76aee944?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80" style="border-top-left-radius:10px;border-bottom-left-radius:10px;" width="370" height="570">
             </div>
 
-            <form action="/pestana/addreservation/<?= $id ?>" method="post" class="d-flex flex-column align-items-center justify-content-center">
-                <?php
-                $reservation = mysqli_fetch_assoc($sql) ?>
-                <div class="d-flex">
-                    <div>
-                        <label>Check-in Date :</label>
-                        <input type="date" name="check_in" value="<?= $reservation['check_in'] ?>">
+            <?php
+            $reservation = mysqli_fetch_assoc($sql) ?>
+            <div class="reservation-updateform">
+                <form action="/pestana/reservation/update/<?= $reservation['reservation_id'] ?>/add" method="post" class="d-flex flex-column align-items-center justify-content-center">
+                    <div class="d-flex">
+                        <div>
+                            <label>Check-in Date :</label>
+                            <input type="date" name="check_in" value="<?= $reservation['check_in'] ?>" id="checkin">
+                        </div>
+                        <div>
+                            <label>Check-out Date :</label>
+                            <input type="date" name="check_out" value="<?= $reservation['check_out'] ?>" id="checkout">
+                        </div>
                     </div>
-                    <div>
-                        <label>Check-out Date :</label>
-                        <input type="date" name="check_out" value="<?= $reservation['check_in'] ?>">
-                    </div>
-                </div>
-                <label>Room Type :</label>
-                <input type="txet" id="roomtype" value="<?= $reservation['room_type'] ?>" name="roomtype" readonly>
+                    <label>Room Type :</label>
+                    <input type="txet" id="roomtype" name="roomtype" value="<?= $reservation['room_type'] ?>" readonly>
+                    <input type="hidden" name="roomid" value="<?= $reservation['room_id'] ?>">
 
-                <label id="suite-label">Suite Type</label>
-                <input type="text" id="SuiteType" value="<?= $rooms['suite_type'] ?>" readonly>
+                    <label id="suite-label"></label>
+                    <input type="hidden" id="SuiteType">
 
-                <div class="d-flex">
-                    <!-- <div>
-                        <label>Room Price :</label>
-                        <input type="number" value="<?= $reservation['room_price'] ?>" name="roomnum" min="1" max="6" readonly>
-                    </div> -->
-                    <div class="guests">
-                        <label>Number Of Guest:</label>
-                        <input id="nbpersonne" type="number" name="guests" value="<?= $reservation['guests_number'] ?>" readonly>
+                    <div class="d-flex">
+                        <div class="guests">
+                            <label>Number Of Guest:</label>
+                            <input id="nbpersonne" type="number" value="<?= $reservation['guests_number'] ?>" readonly>
+                        </div>
                     </div>
-                </div>
-                <div class="container d-flex flex-column align-items-center justify-content-center">
-                    <div class="guests-form row">
-
+                    <div class="container d-flex flex-column align-items-center justify-content-center">
+                        <div class="guests-form row">
+                        </div>
                     </div>
-                </div>
-                <button class="btn btn-success">Book Now</button>
-            </form>
+                    <button class="btn btn-success">Update Now</button>
+                </form>
+                <a href="/pestana/reservation"><button class="btn btn-danger">Cancel</button></a>
+            </div>
         </div>
     </main>
     <!--  footer  -->
