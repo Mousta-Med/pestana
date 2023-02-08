@@ -220,6 +220,7 @@ hr.decoration {
 }
 
 form.search-room {
+  text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -378,5 +379,14 @@ label {
 
   hr.decoration {
     margin-left: 50px;
+  }
+  .display-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  form.search-room {
+    display: block;
   }
 }

@@ -25,6 +25,9 @@ class homecontroller
             $reservation = new reservation;
             $sql = $this->app->showrooms();
             $sql1 = $reservation->showresrvation();
+            $sql2 = $reservation->totalreservation();
+            $sql3 = $reservation->totalrooms();
+            $sql4 = $reservation->totalincom();
             require "app/views/dashboard.view.php";
         }
     }

@@ -91,4 +91,25 @@ class reservation extends Db
         $stmt->bind_param('iss', $reservation_id, $guestname, $dob);
         $stmt->execute();
     }
+    public function totalreservation()
+    {
+        $connect = new Db;
+        $conn = $connect->connection();
+        $query = $conn->query("SELECT COUNT(reservation_id) FROM reservation");
+        return $query;
+    }
+    public function totalrooms()
+    {
+        $connect = new Db;
+        $conn = $connect->connection();
+        $query = $conn->query("SELECT COUNT(romm_id) FROM room");
+        return $query;
+    }
+    public function totalincom()
+    {
+        $connect = new Db;
+        $conn = $connect->connection();
+        $query = $conn->query("SELECT SUM(room_price) FROM room WHERE romm_id IN (SELECT room_id FROM reservation);");
+        return $query;
+    }
 }

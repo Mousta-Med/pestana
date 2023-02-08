@@ -54,19 +54,25 @@
         <div>
             <h1 class="pt-5 mb-5">Search for a Room</h1>
             <form class="search-room mb-5" action="" method="post">
-                <label>Check-in Date:</label>
-                <input type="date" id="checkin" name="checkin" required>
-                <label>Check-out Date:</label>
-                <input type="date" id="checkout" name="checkout" required>
-                <label for="roomtype">Room Type:</label>
-                <select id="roomtype" name="roomtype">
-                    <option>single</option>
-                    <option>double</option>
-                    <option>suite</option>
-                </select>
-                <div class="" style="display: flex; align-items:center;">
+                <div class="display-block">
+                    <label>Check-in Date:</label>
+                    <input type="date" id="checkin" name="checkin" required>
+                </div>
+                <div class="display-block">
+                    <label>Check-out Date:</label>
+                    <input type="date" id="checkout" name="checkout" required>
+                </div>
+                <div class="display-block">
+                    <label for="roomtype">Room Type:</label>
+                    <select id="roomtype" name="roomtype">
+                        <option>single</option>
+                        <option>double</option>
+                        <option>suite</option>
+                    </select>
+                </div>
+                <div style="display: flex; align-items:center; flex-direction:column;">
                     <label for="suitetype" id="suite-label">Suite Type</label>
-                    <select id="SuiteType" class="suitetype form-control" name="suitetype" required>
+                    <select id="SuiteType" class="suitetype" name="suitetype" required>
                         <option>standard</option>
                         <option>junior</option>
                         <option>presidential</option>
@@ -75,7 +81,7 @@
                         <option>bridal</option>
                     </select>
                 </div>
-                <button class="btn btn-primary" type="submit">Search Now</button>
+                <button class="btn btn-primary" style="margin-top: 23px; height: 50px" type="submit">Search Now</button>
             </form>
             <div class="guests" class="d-none">
                 <input id="nbpersonne" type="hidden" disabled>
@@ -116,7 +122,6 @@
             </div>
         </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/pestana/public/js/script.js"></script>
 </body>
 
