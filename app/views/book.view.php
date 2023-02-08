@@ -60,7 +60,8 @@
                     if (isset($_SESSION['check_in'])) {
                     ?>
                         <div>
-                            <label>Check-in Date :</label>
+                            <label>Check-in Date :</label>it
+
                             <input type="date" name="check_in" value="<?= $_SESSION['check_in'] ?>" readonly>
                         </div>
                         <div>
