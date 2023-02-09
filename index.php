@@ -1,8 +1,9 @@
 <?php
 
-require_once "app/controllers/Home.controller.php";
-require_once "app/controllers/User.controller.php";
-require_once "app/controllers/Admin.controller.php";
+// require_once "app/controllers/Home.controller.php";
+// require_once "app/controllers/User.controller.php";
+// require_once "app/controllers/Admin.controller.php";
+require_once "app/controllers/autoload.php";
 $homecontroller = new homecontroller;
 $Usercontroller = new usercontroller;
 $Admincontroller = new admincontroller;
