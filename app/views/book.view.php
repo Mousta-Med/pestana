@@ -48,62 +48,60 @@
 
     <main class="reservation">
         <div class="reservation-form">
-            <div id="image">
-                <img src="https://images.unsplash.com/photo-1606046604972-77cc76aee944?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80" style="border-top-left-radius:10px;border-bottom-left-radius:10px;" width="370" height="570">
-            </div>
-
-            <form action="/pestana/addreservation/<?= $id ?>" method="post" class="d-flex flex-column align-items-center justify-content-center">
+            <form action="/pestana/addreservation/<?= $id ?>" method="post" class="d-flex flex-column align-items-center">
                 <?php
                 $rooms = mysqli_fetch_assoc($sql) ?>
-                <div class="d-flex">
+                <div class="row">
                     <?php
                     if (isset($_SESSION['check_in'])) {
                     ?>
-                        <div>
+                        <div class="col">
                             <label>Check-in Date :</label>it
 
                             <input type="date" name="check_in" value="<?= $_SESSION['check_in'] ?>" readonly>
                         </div>
-                        <div>
+                        <div class="col">
                             <label>Check-out Date :</label>
                             <input type="date" name="check_out" value="<?= $_SESSION['check_out'] ?>" readonly>
                         </div>
                     <?php } else { ?>
-                        <div>
+                        <div class="col">
                             <label>Check-in Date :</label>
                             <input type="date" name="check_in" id="checkin" value="" required>
                         </div>
-                        <div>
+                        <div class="col">
                             <label>Check-out Date :</label>
                             <input type="date" name="check_out" id="checkout" value="" required>
                         </div>
                     <?php } ?>
                 </div>
-                <label>Room Type :</label>
-                <input type="txet" id="roomtype" value="<?= $rooms['romm_type'] ?>" name="roomtype" readonly>
+                <div class="row">
+                    <div class="col">
+                        <label>Room Type :</label>
+                        <input type="txet" id="roomtype" value="<?= $rooms['romm_type'] ?>" name="roomtype" readonly>
+                    </div>
+                    <div id="suite-label" class="col">
+                        <label>Suite Type</label>
+                        <input type="text" id="SuiteType" value="<?= $rooms['suite_type'] ?>" readonly>
+                    </div>
+                </div>
 
-                <label id="suite-label">Suite Type</label>
-                <input type="text" id="SuiteType" value="<?= $rooms['suite_type'] ?>" readonly>
-
-                <div class="d-flex">
-                    <div>
+                <div class="row">
+                    <div class="col">
                         <label>Room Price :</label>
                         <input type="number" value="<?= $rooms['room_price'] ?>" name="roomnum" min="1" max="6" readonly>
                     </div>
-                    <div class="guests">
+                    <div class="guests col">
                         <label>Number Of Guest:</label>
                         <input id="nbpersonne" type="number" name="guests" value="0" min="0" max="6" required>
                     </div>
                 </div>
-                <div class="container d-flex flex-column align-items-center justify-content-center">
-                    <div class="guests-form row">
+                <div class="guests-form">
 
-                    </div>
                 </div>
-                <button class="btn btn-success">Book Now</button>
+                <button class="btn btn-success my-3">Book Now</button>
             </form>
         </div>
-
     </main>
     <!--  footer  -->
     <footer class="text-center text-white bg-black ">

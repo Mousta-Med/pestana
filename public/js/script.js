@@ -13,7 +13,6 @@ function myfunc() {
     selectTwo.removeAttribute("disabled", "disabled");
     selectTwo.classList.remove("d-none");
     suiteSelectLabel.classList.remove("d-none");
-    document.getElementById("image").remove();
   } else {
     guests.classList.add("d-none");
   }
@@ -39,12 +38,17 @@ function myfunc() {
       let i = 1;
       while (i <= value) {
         guestForm.innerHTML += `
-          <div class="col"> 
+    <div class="row">
+        <div class="col">
             <label>Guest Name ${i} :</label>
             <input type="text" name="guestname${i}" required>
-            <label for="dob">Guest Date of birth ${i} :</label>
-            <input type="date" id="dob" name="dob${i}" min="1950-01-01" max="2003-01-01" required> 
-          </div>`;
+        </div>
+        <div class="col">
+            <label for="dob">Guest Birthdate ${i} :</label>
+            <input type="date" id="dob" name="dob${i}" min="1950-01-01" max="2003-01-01" required>
+        </div>
+    </div>
+    <hr>`;
         i++;
       }
     }

@@ -26,6 +26,7 @@ h1 {
   width: 100%;
   background: url(https://img.freepik.com/free-photo/beautiful-umbrella-chair-around-swimming-pool-hotel-resort_74190-1006.jpg?w=996&t=st=1671440447~exp=1671441047~hmac=f8db8a004c8dc2cb36d158474a21e28e84de48d237c8d12c84eb7207070cddc4) no-repeat center;
   background-size: cover;
+  background-attachment: fixed;
 }
 
 .form h4 {
@@ -282,6 +283,7 @@ input[type="submit"]:hover {
   width: 100%;
   background: url(https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80) no-repeat center;
   background-size: cover;
+  background-attachment: fixed;
 }
 
 .update_reservation {
@@ -293,6 +295,7 @@ input[type="submit"]:hover {
   width: 100%;
   background: url(https://images.unsplash.com/photo-1561501900-3701fa6a0864?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bHV4dXJ5JTIwaG90ZWx8ZW58MHx8MHx8&w=1000&q=80) no-repeat center;
   background-size: cover;
+  background-attachment: fixed;
 }
 
 .bookcontainer {
@@ -311,13 +314,22 @@ input[type="submit"]:hover {
   width: 100%;
   background: url(https://images.unsplash.com/photo-1561501900-3701fa6a0864?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bHV4dXJ5JTIwaG90ZWx8ZW58MHx8MHx8&w=1000&q=80) no-repeat center;
   background-size: cover;
+  background-attachment: fixed;
+}
+
+#image img {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
 .reservation-form {
   border-radius: 10px;
   background-color: azure;
   display: flex;
+  padding: 35px 0px;
   box-shadow: 15px 15px 10px rgb(0 0 0 / 50%);
+  overflow-y: auto;
+  height: 380px;
 }
 
 .reservation-updateform {

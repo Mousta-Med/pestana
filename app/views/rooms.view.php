@@ -50,6 +50,7 @@
             </div>
         </div>
     </nav>
+
     <div class="bookcontainer">
         <div>
             <h1 class="pt-5 mb-5">Search for a Room</h1>
@@ -122,6 +123,7 @@
             </div>
         </div>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/pestana/public/js/script.js"></script>
 </body>
 
