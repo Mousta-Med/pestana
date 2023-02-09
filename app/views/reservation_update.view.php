@@ -54,20 +54,16 @@
         unset($_SESSION['alert']);
         ?>
         <div class="reservation-form">
-            <div id="image">
-                <img src="https://images.unsplash.com/photo-1606046604972-77cc76aee944?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80" style="border-top-left-radius:10px;border-bottom-left-radius:10px;" width="370" height="570">
-            </div>
-
             <?php
             $reservation = mysqli_fetch_assoc($sql) ?>
             <div class="reservation-updateform">
                 <form action="/pestana/reservation/update/<?= $reservation['reservation_id'] ?>/add" method="post" class="d-flex flex-column align-items-center justify-content-center">
-                    <div class="d-flex">
-                        <div>
+                    <div class="row">
+                        <div class="col">
                             <label>Check-in Date :</label>
                             <input type="date" name="check_in" value="<?= $reservation['check_in'] ?>" id="checkin">
                         </div>
-                        <div>
+                        <div class="col">
                             <label>Check-out Date :</label>
                             <input type="date" name="check_out" value="<?= $reservation['check_out'] ?>" id="checkout">
                         </div>
