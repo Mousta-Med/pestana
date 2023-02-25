@@ -94,7 +94,9 @@
                         <div class="room mb-3">
                             <div class="inform p-3">
                                 <p><?= ucwords($rooms['romm_type']) ?> Room</p>
-                                <p><?= ucwords($rooms['suite_type']) ?></p>
+                                <p><?php if (isset($rooms['suite_type'])) {
+                                        echo ucwords($rooms['suite_type']);
+                                    } ?></p>
                             </div>
                             <img src="/pestana/public/img/<?= $rooms['room_image'] ?>" alt="">
                             <div class="inform p-3">
